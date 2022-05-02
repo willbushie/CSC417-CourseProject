@@ -1,3 +1,4 @@
 # packages import
-from deck import deck
+from game_logic import game
 
+newGame = game()
