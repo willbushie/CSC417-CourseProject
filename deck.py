@@ -88,3 +88,9 @@ class deck:
         Returns the card at a specified index. Default is `index=0`.
         """
         return self.cards[index]
+
+    def removeCardAt(self, index=0):
+        """
+        This method removes a card at the specified index. Default is `index=0`.
+        """
+        self.cards.pop(index)

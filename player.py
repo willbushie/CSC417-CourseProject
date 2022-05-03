@@ -12,15 +12,19 @@ class player:
         self.fold = False
         self.handValue = 0
 
-    def modifyChips(self,amount):
+    def modifyChips(self,amount,transactionType=0):
         """
         Modify the number of chips (winning/betting).\n
         ### Notice:
         Amount needs to be listed as such:\n
-        For negative amounts = `amount = -100`.\n
-        For positive amounts = `amount = 100`.
+        For negative amounts = `transactionType = 0`.\n
+        For positive amounts = `transactionType = 1`.\n
+        Default `transactionType=0`.
         """
-        self.chips =+ amount
+        if (transactionType == 0):
+            self.chips = self.chips - amount
+        elif (transactionType == 1):
+            self.chips = self.chips + amount
 
     def modifyHand(self,card=None,empty=False):
         """
@@ -28,9 +32,9 @@ class player:
         """
         if (empty == True):
             self.hand = {"c1":None,"c2":None}
-        elif (empty == False) and (card["c1"] == None) and (card != None):
+        elif (empty == False) and (self.hand["c1"] == None) and (card != None):
             self.hand["c1"] = card
-        elif (empty == False) and (card["c2"] == None) and (card != None):
+        elif (empty == False) and (self.hand["c2"] == None) and (card != None):
             self.hand["c2"] = card
         else:
             print(f"There was an issue modifying the hand.\nPassed cards value: {card}, Passed empty value: {empty}")
@@ -45,18 +49,16 @@ class player:
         """
         Modify self.handVaue to evaluate winning positions.\n Default parameter is: `value=0`
         """
-        self.handValue = max(value,self.handValue)
+        if (value == 0):
+            self.handValue = 0
+        elif (value != 0):
+            self.handValue = max(value,self.handValue)
 
     def displayHandPretty(self,print=False):
         """
         This method prints a pretty string of the hand. If `print=False`, the method returns a string of the hand.
         """
-        printout = ""
-        for index in range(len(self.hand)):
-            if (index == 0):
-                printout =+ "The " + self.hand[index].getInfo()
-            else:
-                printout =+ " and " + self.hand[index].getInfo()
+        printout = f"The {self.hand['c1'].getInfo()} and the {self.hand['c2'].getInfo()}"
         if (print == True):
             print(f"Hand is: {printout}.")
         elif (print == False):
@@ -67,29 +69,40 @@ class player:
         This method holds the players actions when it is their turn to bet.
         """
         returnDict = {"action":None,"amount":None,"fold":False}
+        print(f"Player {self.label}:")
         print(f"Price to call is: {call}.\n Your balance: {self.chips}.\n Your hand: {self.displayHandPretty()}.")
         action = input("What would you like to do?\n Raise - Call - Fold\n")
         if (action.lower() == "call"):
-            self.modifyChips(amount=-call)
+            self.modifyChips(amount=call)
             returnDict["action"] = "call"
             returnDict["amount"] = call
+            print(f"Player {self.label} has chosen to call. Remaining chips: {self.chips}.")
             return returnDict
         elif(action.lower() == "raise"):
             while(True):
-                amount = input("How much would you like to raise the call by?\n")
+                amount = int(input("How much would you like to raise the call by?\n"))
                 if (amount > 0):
                     break
                 elif (amount <= 0):
                     print("This is an invalid amount to raise by. Please try again.")
-            self.modifyChips(amount=-(call+amount))
+            totalBet = call + amount
+            self.modifyChips(amount=totalBet,transactionType=0)
             returnDict["action"] = "raise"
             returnDict["amount"] = amount
+            print(f"Player {self.label} has chosen to raise. Remaining chips: {self.chips}.")
             return returnDict
         elif(action.lower() == "fold"):
             self.modifyFold()
             returnDict["fold"] = "true"
+            print(f"Player {self.label} has chosen to fold. Remaining chips: {self.chips}.")
             return returnDict
     
+    def getHandValue(self):
+        """
+        Return the `handValue` for the player object.
+        """
+        return self.handValue
+
     def getFoldStatus(self):
         """
         Return a true or false of the fold status.
