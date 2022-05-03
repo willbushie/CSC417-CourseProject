@@ -41,6 +41,12 @@ class player:
         """
         self.fold = fold
 
+    def modifyHandValue(self,value=0):
+        """
+        Modify self.handVaue to evaluate winning positions.\n Default parameter is: `value=0`
+        """
+        self.handValue = max(value,self.handValue)
+
     def displayHandPretty(self,print=False):
         """
         This method prints a pretty string of the hand. If `print=False`, the method returns a string of the hand.
@@ -84,3 +90,32 @@ class player:
             returnDict["fold"] = "true"
             return returnDict
     
+    def getFoldStatus(self):
+        """
+        Return a true or false of the fold status.
+        """
+        return self.fold
+
+    def getLabel(self):
+        """
+        Return a string of the player label.
+        """
+        return self.label
+
+    def getCard(self,card=1):
+        """
+        Get one of the cards from the player hand. Enter `1` for "c1" and `2` for "c2".\n
+        Card object is returned
+        """
+        if (card == 1):
+            return self.hand["c1"]
+        elif (card == 2):
+            return self.hand["c2"]
+
+    def resetState(self):
+        """
+        This method will reset all of the correct items between rounds.
+        """
+        self.modifyFold(fold=False)
+        self.modifyHand(empty=True)
+        self.modifyHandValue()

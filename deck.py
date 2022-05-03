@@ -7,7 +7,8 @@ class deck:
     Creates a single deck of 52 cards, and shuffles the list of cards.
     """
     def __init__(self) -> None:
-        self.deck = self.createDeck()
+        self.cards = []
+        self.createDeck()
     
     def createDeck(self):
         """
@@ -70,14 +71,20 @@ class deck:
             {"suit":"Clubs","rank":"Jack"},
             {"suit":"Clubs","rank":"Queen"},
             {"suit":"Clubs","rank":"King"}]
-        cardsList = []
-        for c in len(range(cards)):
-            currCard = card(c["suit"],c["rank"])
-            cardsList.append(currCard)
-        return shuffle(cardsList)
+        for index in range(len(cards)):
+            currCard = card(cards[index]["suit"],cards[index]["rank"])
+            self.cards.append(currCard)
+        shuffle(self.cards)
 
     def display(self):
         """
-        Displays information the deck
+        Displays every card in the deck.
         """
-        pass
+        for index in range(len(self.cards)):
+            print(f"The {self.cards[index].getInfo()}")
+
+    def getCardAtIndex(self,index=0):
+        """
+        Returns the card at a specified index. Default is `index=0`.
+        """
+        return self.cards[index]
