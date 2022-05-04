@@ -1,11 +1,10 @@
 # imports
-from card import card
 
-class player:
+class bot_player:
     """
-    This is the player object which has the ability to play the game.
+    This is the class for an automated player.
     """
-    def __init__(self,label,chips) -> None:
+    def __init__(self,label,chips):
         self.label = label
         self.chips = chips
         self.hand = {"c1":None,"c2":None}
@@ -25,7 +24,7 @@ class player:
             self.chips = self.chips - amount
         elif (transactionType == 1):
             self.chips = self.chips + amount
-
+   
     def modifyHand(self,card=None,empty=False):
         """
         Modify hand (giving/removing cards).
@@ -99,10 +98,10 @@ class player:
         self.modifyFold(fold=False)
         self.modifyHand(empty=True)
         self.modifyHandValue()
-
+    
     def turn(self,call):
         """
-        This method holds the players actions when it is their turn to bet.
+        This method contains the actions of an automated player
         """
         returnDict = {"action":None,"amount":None,"fold":False}
         print(f"Player {self.label}:")
