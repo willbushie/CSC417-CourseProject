@@ -6,103 +6,54 @@ class game:
     """
     The Poker Game class.
     """
-    def __init__(self,players,call) -> None:
+    def __init__(self,players,call,anti) -> None:
         if len(players) < 2:
-            print("Players needs to be two or more.")
+            print("Number of players needs to be two or more.")
             return Exception
         self.players = players
         self.activePlayers = players
-        self.numOfPlayers = len(self.players)
-        self.pot = 0
-        self.originalCallAmount = call
-        self.call = self.originalCallAmount
-        self.deck = None
+        self.call = call
+        self.anti = anti
         self.shownCards = []
         self.history = []
+        # needs to be a better way of continueing a game until:
+        # 1) only on player remains (because players quit)
+        # 2) one player wins (only player with chips)
         self.newRound()
 
     def newRound(self):
         """
         This method will begin a new turn/round and run until there is a winner.
         """
-        # reset the numbers
-        self.pot = 0
-        self.call = self.originalCallAmount
-        cardPlacement = 0
-        self.nonFoldPlayers = self.numOfPlayers
-        # create deck
-        self.deck = deck()
+        # reset the numbers & prepare state
+        pot = 0
+        call = self.call
+        activePlayers = []
+        for index in range(len(self.activePlayers)):
+            currPlayer = {"player":self.activePlayers[index],"callStatus":False}
+            activePlayers.append(currPlayer)
+        currDeck = deck()
         # hand cards to players
-        for index in range(len(self.players)):
-            self.players[index].modifyHand(self.deck.getCardAtIndex())
+        for index in range(len(self.activePlayers)):
+            self.activePlayers[index].modifyHand(self.deck.getCardAtIndex())
             self.deck.removeCardAt()
-        for index in range(len(self.players)):
-            self.players[index].modifyHand(self.deck.getCardAtIndex())
+        for index in range(len(self.activePlayers)):
+            self.activePlayers[index].modifyHand(self.deck.getCardAtIndex())
             self.deck.removeCardAt()
-        # for simplicty sake, start betting at self.players[0]
-        winner = False
-        while(True):
-            if (winner == False) and (len(self.activePlayers) > 1):
-                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-                for index in range(len(self.players)):
-                    self.players[index].modifyChips(amount=self.call,transactionType=0)
-                    self.pot = self.pot + self.call
-                for index in range(len(self.players)):
-                    if (self.players[index].getFoldStatus() == False) and (len(self.activePlayers) > 1):
-                        print("========================================")
-                        print(f"The current pot value: {self.pot} chips.")
-                        if (len(self.shownCards) > 0):
-                            print(f"The current cards are: {self.prettyPrintShownCards()}.")
-                        else:
-                            print("No cards have been shown yet.")
-                        turnResult = self.players[index].turn(self.call)
-                        # evaluate the players actions and act accordinlgy
-                        if (turnResult["action"] == "call"):
-                            self.pot = self.pot + self.call
-                        elif (turnResult == "raise"):
-                            self.raiseCall(amount=turnResult["amount"])
-                            self.pot + self.call                
-                        elif (turnResult == "fold"):
-                            self.nonFoldPlayers =- 1
-                            self.activePlayers.pop(self.players[index])
-                    elif (len(self.activePlayers) == 1):
-                        # declare this player as the winner and quit the round
-                        currentPlayer = self.activePlayers[0]
-                        print(f"The winner of this round is: {currentPlayer.getLabel()}")
-                        currentPlayer.modifyChips(amount=self.pot,transactionType=1)
-                        winner = True
-                # NEED A WAY OF CHECKING FOR EVERYONE IF THERE IS A RAISE
-                if (cardPlacement == 0):
-                    for i in range(3):
-                        self.shownCards.append(self.deck.getCardAtIndex())
-                        self.deck.removeCardAt()
-                    cardPlacement = cardPlacement + 1
-                    self.prettyPrintShownCards()
-                elif (cardPlacement == 1):
-                    self.shownCards.append(self.deck.getCardAtIndex())
-                    self.deck.removeCardAt()
-                    cardPlacement = cardPlacement + 1
-                    self.prettyPrintShownCards()
-                elif (cardPlacement == 2):
-                    self.shownCards.append(self.deck.getCardAtIndex())
-                    self.deck.removeCardAt()
-                    cardPlacement = cardPlacement + 1
-                    self.prettyPrintShownCards()
-                elif (cardPlacement == 3):
-                    self.evaluateHands()
-                    gameResults = []
-                    for j in range(len(self.players)):
-                        temp = {"player":self.players[j],"label":self.players[j].getLabel(),"score":self.players[j].getHandValue()}
-                        gameResults.append(temp)
-                    print(gameResults)
-                    gameResults.sort(key=lambda item: item.get("score"),reverse=True)
-                    gameResults[0]["player"].modifyChips(amount=self.pot,transactionType=1)
-                    winner = True
-            elif (winner != False) or (self.activePlayers == 1):
-                break
+            
+        # start the entire round (until there is a winner/or/only one person has not folded)
+        # start the betting round
+        # have all players place the anti
+        # begin asking players to take their turns
+        # if a player calls, move on
+        # if a player 
+
+        
+        # shuffle players inside of self.activePlayers (move first player to end, and all players up one [1,2,3,4] > [2,3,4,1])
         # reset all player information
         for index in range(len(self.players)):
             self.players[index].resetState()
+
             
     def raiseCall(self,amount):
         """
@@ -132,8 +83,8 @@ class game:
 
     def evaluateHands(self):
         """
-        This method checks the hand of all active players and the cards on the table which are used to determine a winner.\n
-        This method also changes the hand value for each player.\n
+        This method checks the hand of all active players and the cards on the table which are used to determine a winner.
+        This method also changes the hand value for each player.
         The card handing checking is not perfect, but it functions correclty.
         """
         # check the cards on the table with the 
