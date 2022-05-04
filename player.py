@@ -3,7 +3,7 @@ from card import card
 
 class player:
     """
-    This is the player object which has the ability to play the game.
+    This is the player object which has the ability to play the game via command line (requires human).
     """
     def __init__(self,label,chips) -> None:
         self.label = label
