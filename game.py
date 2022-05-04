@@ -45,11 +45,16 @@ class game:
         # start the betting round
         # have all players place the anti
         # begin asking players to take their turns
-        # if a player calls, move on
-        # if a player 
+        # if a player calls, modify their call status and move on
+        # if a player folds, remove them from active players for the round (not self.active players)
+        # if a player raises, modify their call status, and modify everyone elses to False
+        # once all players' call status is True, move on (flop, fourth deal, river)
 
         
         # shuffle players inside of self.activePlayers (move first player to end, and all players up one [1,2,3,4] > [2,3,4,1])
+        firstPlayer = self.activePlayers[0]
+        self.activePlayers.pop(0)
+        self.activePlayers.append(firstPlayer)
         # reset all player information
         for index in range(len(self.players)):
             self.players[index].resetState()
