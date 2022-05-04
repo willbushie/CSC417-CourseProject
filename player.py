@@ -54,6 +54,14 @@ class player:
         elif (value != 0):
             self.handValue = max(value,self.handValue)
 
+    def resetState(self):
+        """
+        This method will reset all of the correct items between rounds.
+        """
+        self.modifyCallSatus()
+        self.modifyHand(empty=True)
+        self.modifyHandValue()
+    
     def displayHandPretty(self,print=False):
         """
         This method prints a pretty string of the hand. If `print=False`, the method returns a string of the hand.
@@ -76,6 +84,12 @@ class player:
         """
         return self.handValue
 
+    def getChipValue(self):
+        """
+        Return the `int` value for a player's chips.
+        """
+        return self.chips
+
     def getLabel(self):
         """
         Return a string of the player label.
@@ -92,19 +106,11 @@ class player:
         elif (card == 2):
             return self.hand["c2"]
 
-    def resetState(self):
-        """
-        This method will reset all of the correct items between rounds.
-        """
-        self.modifyCallSatus()
-        self.modifyHand(empty=True)
-        self.modifyHandValue()
-    
     def turn(self,call):
         """
         This method holds the players actions when it is their turn to bet.
         """
-        returnDict = {"action":None,"amount":None,"fold":False}
+        returnDict = {"action":None,"amount":0}
         print(f"Player {self.label}:")
         print(f"Price to call is: {call}.\n Your balance: {self.chips}.\n Your hand: {self.displayHandPretty()}.")
         action = input("What would you like to do?\n Raise - Call - Fold\n")
@@ -128,6 +134,8 @@ class player:
             print(f"Player {self.label} has chosen to raise. Remaining chips: {self.chips}.")
             return returnDict
         elif(action.lower() == "fold"):
-            returnDict["fold"] = "true"
+            returnDict["action"] = "fold"
             print(f"Player {self.label} has chosen to fold. Remaining chips: {self.chips}.")
             return returnDict
+        elif (action.lower() == "leave"):
+            pass
