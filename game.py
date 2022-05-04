@@ -14,7 +14,6 @@ class game:
         self.activePlayers = players
         self.call = call
         self.anti = anti
-        self.shownCards = []
         self.history = []
         # needs to be a better way of continueing a game until:
         # 1) only on player remains (because players quit)
@@ -28,6 +27,7 @@ class game:
         # reset the numbers & prepare state
         pot = 0
         call = self.call
+        shownCards = []
         activePlayers = []
         for index in range(len(self.activePlayers)):
             currPlayer = {"player":self.activePlayers[index],"callStatus":False}
@@ -40,18 +40,22 @@ class game:
         for index in range(len(self.activePlayers)):
             self.activePlayers[index].modifyHand(self.deck.getCardAtIndex())
             self.deck.removeCardAt()
-            
+        
         
         # start the entire round (until there is a winner/or/only one person has not folded)
-        # start the betting round
-        # have all players place the anti
-        # begin asking players to take their turns
-        # if a player calls, modify their call status and move on
-        # if a player folds, remove them from active players for the round (not self.active players)
-        # if a player raises, modify their call status, and modify everyone elses to False
-        # once all players' call status is True, move on (flop, fourth deal, river)
-
+        while(len(activePlayers) != 1):
+            # start the betting round
+            while(self.allPlayersBet(activePlayers) == False):
+                # have all players place the anti
+                # begin asking players to take their turns
+                # if a player calls, modify their call status and move on
+                # if a player folds, remove them from active players for the round (not self.active players)
+                # if a player raises, modify their call status, and modify everyone elses to False
+                # once all players' call status is True, move on (flop, fourth deal, river)
+                pass
         
+        # add the winning to a players balance
+        # ensure a player is removed from the self.players list if their chips are 0
         # shuffle players inside of self.activePlayers (move first player to end, and all players up one [1,2,3,4] > [2,3,4,1])
         firstPlayer = self.activePlayers[0]
         self.activePlayers.pop(0)
@@ -60,7 +64,21 @@ class game:
         for index in range(len(self.players)):
             self.players[index].resetState()
 
-            
+    
+    def allPlayersBet(self,activePlayers):
+        """
+        This method will check if all players in an active player's list have bet or not. Returns `False` if not and `True` if yes.
+        """
+        numOfPlayers = len(activePlayers)
+        betCount = 0
+        for index in range(len(activePlayers)):
+            if (activePlayers[index].getCallStatus() == True):
+                betCount = betCount + 1
+        if (numOfPlayers == betCount):
+            return True
+        elif (numOfPlayers != betCount):
+            return False
+
     def raiseCall(self,amount):
         """
         This method is for when a player raises.

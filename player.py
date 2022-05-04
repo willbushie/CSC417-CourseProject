@@ -64,6 +64,12 @@ class player:
         elif (print == False):
             return printout
     
+    def getCallStatus(self):
+        """
+        This method returns the bool value for a player's call status.
+        """
+        return self.callStatus
+
     def getHandValue(self):
         """
         Return the `handValue` for the player object.
