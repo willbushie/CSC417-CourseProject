@@ -39,7 +39,7 @@ class player:
         else:
             print(f"There was an issue modifying the hand.\nPassed cards value: {card}, Passed empty value: {empty}")
 
-    def modifyCallSatus(self,status=False):
+    def modifyCallStatus(self,status=False):
         """
         This method will update a players `callSatus`. Default is `callStatus=False`.
         """
@@ -58,7 +58,7 @@ class player:
         """
         This method will reset all of the correct items between rounds.
         """
-        self.modifyCallSatus()
+        self.modifyCallStatus()
         self.modifyHand(empty=True)
         self.modifyHandValue()
     
@@ -118,24 +118,21 @@ class player:
             self.modifyChips(amount=call)
             returnDict["action"] = "call"
             returnDict["amount"] = call
-            print(f"Player {self.label} has chosen to call. Remaining chips: {self.chips}.")
             return returnDict
         elif(action.lower() == "raise"):
             while(True):
                 amount = int(input("How much would you like to raise the call by?\n"))
-                if (amount > 0):
+                if (amount > 0) and ((self.chips - amount) > 0):
                     break
-                elif (amount <= 0):
+                elif (amount <= 0) or ((self.chips - amount) < 0):
                     print("This is an invalid amount to raise by. Please try again.")
             totalBet = call + amount
             self.modifyChips(amount=totalBet,transactionType=0)
             returnDict["action"] = "raise"
             returnDict["amount"] = amount
-            print(f"Player {self.label} has chosen to raise. Remaining chips: {self.chips}.")
             return returnDict
         elif(action.lower() == "fold"):
             returnDict["action"] = "fold"
-            print(f"Player {self.label} has chosen to fold. Remaining chips: {self.chips}.")
             return returnDict
         elif (action.lower() == "leave"):
             pass
