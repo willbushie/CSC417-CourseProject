@@ -63,7 +63,37 @@ class player:
             print(f"Hand is: {printout}.")
         elif (print == False):
             return printout
+    
+    def getHandValue(self):
+        """
+        Return the `handValue` for the player object.
+        """
+        return self.handValue
 
+    def getLabel(self):
+        """
+        Return a string of the player label.
+        """
+        return self.label
+
+    def getCard(self,card=1):
+        """
+        Get one of the cards from the player hand. Enter `1` for "c1" and `2` for "c2".\n
+        Card object is returned
+        """
+        if (card == 1):
+            return self.hand["c1"]
+        elif (card == 2):
+            return self.hand["c2"]
+
+    def resetState(self):
+        """
+        This method will reset all of the correct items between rounds.
+        """
+        self.modifyCallSatus()
+        self.modifyHand(empty=True)
+        self.modifyHandValue()
+    
     def turn(self,call):
         """
         This method holds the players actions when it is their turn to bet.
@@ -95,33 +125,3 @@ class player:
             returnDict["fold"] = "true"
             print(f"Player {self.label} has chosen to fold. Remaining chips: {self.chips}.")
             return returnDict
-    
-    def getHandValue(self):
-        """
-        Return the `handValue` for the player object.
-        """
-        return self.handValue
-
-    def getLabel(self):
-        """
-        Return a string of the player label.
-        """
-        return self.label
-
-    def getCard(self,card=1):
-        """
-        Get one of the cards from the player hand. Enter `1` for "c1" and `2` for "c2".\n
-        Card object is returned
-        """
-        if (card == 1):
-            return self.hand["c1"]
-        elif (card == 2):
-            return self.hand["c2"]
-
-    def resetState(self):
-        """
-        This method will reset all of the correct items between rounds.
-        """
-        self.modifyCallSatus()
-        self.modifyHand(empty=True)
-        self.modifyHandValue()
