@@ -9,7 +9,7 @@ class player:
         self.label = label
         self.chips = chips
         self.hand = {"c1":None,"c2":None}
-        self.fold = False
+        self.callStatus = False
         self.handValue = 0
 
     def modifyChips(self,amount,transactionType=0):
@@ -39,11 +39,11 @@ class player:
         else:
             print(f"There was an issue modifying the hand.\nPassed cards value: {card}, Passed empty value: {empty}")
 
-    def modifyFold(self,fold=True):
+    def modifyCallSatus(self,status=False):
         """
-        This method will update a players `fold` status.
+        This method will update a players `callSatus`. Default is `callStatus=False`.
         """
-        self.fold = fold
+        self.callSatus = status
 
     def modifyHandValue(self,value=0):
         """
@@ -92,7 +92,6 @@ class player:
             print(f"Player {self.label} has chosen to raise. Remaining chips: {self.chips}.")
             return returnDict
         elif(action.lower() == "fold"):
-            self.modifyFold()
             returnDict["fold"] = "true"
             print(f"Player {self.label} has chosen to fold. Remaining chips: {self.chips}.")
             return returnDict
@@ -102,12 +101,6 @@ class player:
         Return the `handValue` for the player object.
         """
         return self.handValue
-
-    def getFoldStatus(self):
-        """
-        Return a true or false of the fold status.
-        """
-        return self.fold
 
     def getLabel(self):
         """
@@ -129,6 +122,6 @@ class player:
         """
         This method will reset all of the correct items between rounds.
         """
-        self.modifyFold(fold=False)
+        self.modifyCallSatus()
         self.modifyHand(empty=True)
         self.modifyHandValue()

@@ -41,6 +41,7 @@ class game:
             self.activePlayers[index].modifyHand(self.deck.getCardAtIndex())
             self.deck.removeCardAt()
             
+        
         # start the entire round (until there is a winner/or/only one person has not folded)
         # start the betting round
         # have all players place the anti
