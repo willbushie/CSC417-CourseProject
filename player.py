@@ -10,7 +10,7 @@ class player:
         self.chips = chips
         self.hand = {"c1":None,"c2":None}
         self.callStatus = False
-        self.handValue = 0
+        self.handValue = {"score":0,"value":0}
 
     def modifyChips(self,amount,transactionType=0):
         """
@@ -45,14 +45,18 @@ class player:
         """
         self.callSatus = status
 
-    def modifyHandValue(self,value=0):
+    def modifyHandValue(self,score=0,value=0):
         """
-        Modify self.handVaue to evaluate winning positions.\n Default parameter is: `value=0`
+        Modify self.handVaue to evaluate winning positions.\n Default is: `score=0` and `value=0`.\n
+        `score` is the type of hands rank to win. `value` is the score within that rank to win.
         """
-        if (value == 0):
-            self.handValue = 0
-        elif (value != 0):
-            self.handValue = max(value,self.handValue)
+        if (score == 0):
+            self.handValue["score"] = 0
+            self.handValue["value"] = 0
+        elif (score != 0):
+            if (score > self.handValue["score"]):
+                self.handValue["score"] = score
+                self.handValue["value"] = value
 
     def resetState(self):
         """
@@ -113,11 +117,10 @@ class player:
         returnDict = {"action":None,"amount":0}
         print(f"Player {self.label}:")
         print(f"Price to call is: {call}.\n Your balance: {self.chips}.\n Your hand: {self.displayHandPretty()}.")
-        action = input("What would you like to do?\n Raise - Call - Fold\n")
+        action = input("What would you like to do?\n Call - Raise - Fold\n")
         if (action.lower() == "call"):
             self.modifyChips(amount=call)
             returnDict["action"] = "call"
-            returnDict["amount"] = call
             return returnDict
         elif(action.lower() == "raise"):
             while(True):
