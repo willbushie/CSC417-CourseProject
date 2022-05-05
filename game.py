@@ -1546,8 +1546,34 @@ class game:
                     players[index].modifyHandValue(score=3,value=(13+12))
 
             # 2  - checking for pair
-            if (stats["1"] == 2) or (stats["2"] == 2) or (stats["3"] == 2) or (stats["4"] == 2) or (stats["5"] == 2) or (stats["6"] == 2) or (stats["7"] == 2) or (stats["8"] == 2) or (stats["9"] == 2) or (stats["10"] == 2) or (stats["Jack"] == 2) or (stats["Queen"] == 2) or (stats["King"] == 2) or (stats["Ace"] == 2):
-                players[index].modifyHandValue(score=2)
+            if (stats["1"] == 2):
+                players[index].modifyHandValue(score=2,value=0)
+            elif (stats["2"] == 2):
+                players[index].modifyHandValue(score=2,value=1)
+            elif (stats["3"] == 2):
+                players[index].modifyHandValue(score=2,value=2)
+            elif (stats["4"] == 2):
+                players[index].modifyHandValue(score=2,value=3)
+            elif (stats["5"] == 2):
+                players[index].modifyHandValue(score=2,value=4)
+            elif (stats["6"] == 2):
+                players[index].modifyHandValue(score=2,value=5)
+            elif (stats["7"] == 2):
+                players[index].modifyHandValue(score=2,value=6)
+            elif (stats["8"] == 2):
+                players[index].modifyHandValue(score=2,value=7)
+            elif (stats["9"] == 2):
+                players[index].modifyHandValue(score=2,value=8)
+            elif (stats["10"] == 2):
+                players[index].modifyHandValue(score=2,value=9)
+            elif (stats["Jack"] == 2):
+                players[index].modifyHandValue(score=2,value=10)
+            elif (stats["Queen"] == 2):
+                players[index].modifyHandValue(score=2,value=11)
+            elif (stats["King"] == 2):
+                players[index].modifyHandValue(score=2,value=12)
+            elif (stats["Ace"] == 2):
+                players[index].modifyHandValue(score=2,value=13)
             
             # 1  - checking for high card - is this necessary?
             players[index].modifyHandValue(score=1)
