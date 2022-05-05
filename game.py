@@ -346,8 +346,34 @@ class game:
                     players[index].modifyHandValue(score=9,value=9)
             
             # 8  - checking for four of a kind
-            if (stats["1"] == 4) or (stats["2"] == 4) or (stats["3"] == 4) or (stats["4"] == 4) or (stats["5"] == 4) or (stats["6"] == 4) or (stats["7"] == 4) or (stats["8"] == 4) or (stats["9"] == 4) or (stats["10"] == 4) or (stats["Jack"] == 4) or (stats["Queen"] == 4) or (stats["King"] == 4) or (stats["Ace"] == 4):
-                players[index].modifyHandValue(score=8)
+            if (stats["1"] == 4):
+                players[index].modifyHandValue(score=8,value=0)
+            elif (stats["2"] == 4):
+                players[index].modifyHandValue(score=8,value=1)
+            elif (stats["3"] == 4):
+                players[index].modifyHandValue(score=8,value=2)
+            elif (stats["4"] == 4):
+                players[index].modifyHandValue(score=8,value=3)
+            elif (stats["5"] == 4):
+                players[index].modifyHandValue(score=8,value=4)
+            elif (stats["6"] == 4):
+                players[index].modifyHandValue(score=8,value=5)
+            elif (stats["7"] == 4):
+                players[index].modifyHandValue(score=8,value=6)
+            elif (stats["8"] == 4):
+                players[index].modifyHandValue(score=8,value=7)
+            elif (stats["9"] == 4):
+                players[index].modifyHandValue(score=8,value=8)
+            elif (stats["10"] == 4):
+                players[index].modifyHandValue(score=8,value=9)
+            elif (stats["Jack"] == 4):
+                players[index].modifyHandValue(score=8,value=10)
+            elif (stats["Queen"] == 4):
+                players[index].modifyHandValue(score=8,value=11)
+            elif (stats["King"] == 4):
+                players[index].modifyHandValue(score=8,value=12)
+            elif (stats["Ace"] == 4):
+                players[index].modifyHandValue(score=8,value=13)
             
             # 7  - checking for a full house (one pair, and one three of a kind)
             if (stats["1"] == 2) or (stats["2"] == 2) or (stats["3"] == 2) or (stats["4"] == 2) or (stats["5"] == 2) or (stats["6"] == 2) or (stats["7"] == 2) or (stats["8"] == 2) or (stats["9"] == 2) or (stats["10"] == 2) or (stats["Jack"] == 2) or (stats["Queen"] == 2) or (stats["King"] == 2) or (stats["Ace"] == 2):
