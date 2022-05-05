@@ -16,11 +16,10 @@ class game:
         self.history = []
         # play the game
         if (play == True):
-            # needs to be a better way of continueing a game until:
-            # 1) only on player remains (because players quit)
-            # 2) one player wins (only player with chips)
-            self.newRound()
-        # test evaluateHands Function
+            # Continue game until one player remains
+            while (len(self.activePlayers) > 1):
+                self.newRound()
+        # test evaluateHands() method - specifically made to do that
         elif (play == False):
             self.evaluateHands(cards,players)
 
@@ -121,12 +120,24 @@ class game:
                 if (activePlayers[index].getHandValue()["score"] == maxScore):
                     winningPlayers.append(activePlayers[index])
             if (len(winningPlayers) == 1):
-                winningPlayers[0].modifyChips(pot,transactiontype=1)
-                print(f"Player {winningPlayers[index].getLabel()} has won the round. Winnings: {pot}. Chips: {activePlayers[index].getChipValue()}")
+                winningPlayers[0].modifyChips(pot,transactionType=1)
+                print(f"Player {winningPlayers[0].getLabel()} has won the round. Winnings: {pot}. Chips: {winningPlayers[0].getChipValue()}")
             elif (len(winningPlayers) > 1):
+                values = []
                 for index in range(len(winningPlayers)):
-                    winningPlayers[index].modifyChips((pot/len(winningPlayers)),transactionType=1)
-                    print(f"Player {winningPlayers[index].getLabel()} has tied for the win. Winnings: {pot/len(winningPlayers)}. Chips: {activePlayers[index].getChipValue()}")
+                    values.append(winningPlayers[index].getHandValue["value"])
+                maxValue = max(values)
+                finalWinners = []
+                for index in range(len(winningPlayers)):
+                    if (winningPlayers[index].getHandValue()["value"] == maxValue):
+                        finalWinners.append(winningPlayers[index])
+                if (len(finalWinners) > 1):
+                    for index in range(len(winningPlayers)):
+                        finalWinners[index].modifyChips((pot/len(finalWinners)),transactionType=1)
+                        print(f"Player {finalWinners[index].getLabel()} has tied for the win. Winnings: {pot/len(finalWinners)}. Chips: {finalWinners[index].getChipValue()}")
+                elif (len(finalWinners) == 1):
+                    finalWinners[0].modifyChips((pot/len(winningPlayers)),transactionType=1)
+                    print(f"Player {winningPlayers[index].getLabel()} has tied for the win. Winnings: {pot/len(winningPlayers)}. Chips: {finalWinners[index].getChipValue()}")
         # ensure a player is removed from the self.players list if their chips are 0
         index = 0
         while(index < len(self.activePlayers)):
