@@ -36,4 +36,4 @@ class card:
         elif (self.getRank() not in letter):
             simple = simple + (self.getRank())[:1]
         simple = simple + ((self.getSuit())[:1]).lower()
-        print(simple)
+        return simple
