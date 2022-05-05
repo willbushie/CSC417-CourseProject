@@ -376,12 +376,768 @@ class game:
                 players[index].modifyHandValue(score=8,value=13)
             
             # 7  - checking for a full house (one pair, and one three of a kind)
-            if (stats["1"] == 2) or (stats["2"] == 2) or (stats["3"] == 2) or (stats["4"] == 2) or (stats["5"] == 2) or (stats["6"] == 2) or (stats["7"] == 2) or (stats["8"] == 2) or (stats["9"] == 2) or (stats["10"] == 2) or (stats["Jack"] == 2) or (stats["Queen"] == 2) or (stats["King"] == 2) or (stats["Ace"] == 2):
-                if (stats["1"] == 3) or (stats["2"] == 3) or (stats["3"] >= 3) or (stats["4"] == 3) or (stats["5"] == 3) or (stats["6"] == 3) or (stats["7"] == 3) or (stats["8"] == 3) or (stats["9"] == 3) or (stats["10"] == 3) or (stats["Jack"] == 3) or (stats["Queen"] == 3) or (stats["King"] == 3) or (stats["Ace"] == 3):
+            if (stats["1"] == 3):
+                if (stats["2"] >= 2):
+                    players[index].modifyHand(score=7,value=(0+1))
+                elif (stats["3"] >= 2):
+                    players[index].modifyHand(score=7,value=(0+2))
+                elif (stats["4"] >= 2):
+                    players[index].modifyHand(score=7,value=(0+3))
+                elif (stats["5"] >= 2):
+                    players[index].modifyHand(score=7,value=(0+4))
+                elif (stats["6"] >= 2):
+                    players[index].modifyHand(score=7,value=(0+5))
+                elif (stats["7"] >= 2):
+                    players[index].modifyHand(score=7,value=(0+6))
+                elif (stats["8"] >= 2):
+                    players[index].modifyHand(score=7,value=(0+7))
+                elif (stats["9"] >= 2):
+                    players[index].modifyHand(score=7,value=(0+8))
+                elif (stats["10"] >= 2):
+                    players[index].modifyHand(score=7,value=(0+9))
+                elif (stats["Jack"] >= 2):
+                    players[index].modifyHand(score=7,value=(0+10))
+                elif (stats["Queen"] >= 2):
+                    players[index].modifyHand(score=7,value=(0+11))
+                elif (stats["King"] >= 2):
+                    players[index].modifyHand(score=7,value=(0+12))
+                elif (stats["Ace"] >= 2):
+                    players[index].modifyHand(score=7,value=(0+13))
+            elif (stats["2"] == 3):
+                if (stats["1"] >= 2):
+                    players[index].modifyHand(score=7,value=(1+0))
+                elif (stats["3"] >= 2):
+                    players[index].modifyHand(score=7,value=(1+2))
+                elif (stats["4"] >= 2):
+                    players[index].modifyHand(score=7,value=(1+3))
+                elif (stats["5"] >= 2):
+                    players[index].modifyHand(score=7,value=(1+4))
+                elif (stats["6"] >= 2):
+                    players[index].modifyHand(score=7,value=(1+5))
+                elif (stats["7"] >= 2):
+                    players[index].modifyHand(score=7,value=(1+6))
+                elif (stats["8"] >= 2):
+                    players[index].modifyHand(score=7,value=(1+7))
+                elif (stats["9"] >= 2):
+                    players[index].modifyHand(score=7,value=(1+8))
+                elif (stats["10"] >= 2):
+                    players[index].modifyHand(score=7,value=(1+9))
+                elif (stats["Jack"] >= 2):
+                    players[index].modifyHand(score=7,value=(1+10))
+                elif (stats["Queen"] >= 2):
+                    players[index].modifyHand(score=7,value=(1+11))
+                elif (stats["King"] >= 2):
+                    players[index].modifyHand(score=7,value=(1+12))
+                elif (stats["Ace"] >= 2):
+                    players[index].modifyHand(score=7,value=(1+13))
+            elif (stats["3"] == 3):
+                if (stats["1"] >= 2):
+                    players[index].modifyHand(score=7,value=(2+0))
+                elif (stats["2"] >= 2):
+                    players[index].modifyHand(score=7,value=(2+1))
+                elif (stats["4"] >= 2):
+                    players[index].modifyHand(score=7,value=(2+3))
+                elif (stats["5"] >= 2):
+                    players[index].modifyHand(score=7,value=(2+4))
+                elif (stats["6"] >= 2):
+                    players[index].modifyHand(score=7,value=(2+5))
+                elif (stats["7"] >= 2):
+                    players[index].modifyHand(score=7,value=(2+6))
+                elif (stats["8"] >= 2):
+                    players[index].modifyHand(score=7,value=(2+7))
+                elif (stats["9"] >= 2):
+                    players[index].modifyHand(score=7,value=(2+8))
+                elif (stats["10"] >= 2):
+                    players[index].modifyHand(score=7,value=(2+9))
+                elif (stats["Jack"] >= 2):
+                    players[index].modifyHand(score=7,value=(2+10))
+                elif (stats["Queen"] >= 2):
+                    players[index].modifyHand(score=7,value=(2+11))
+                elif (stats["King"] >= 2):
+                    players[index].modifyHand(score=7,value=(2+12))
+                elif (stats["Ace"] >= 2):
+                    players[index].modifyHand(score=7,value=(2+13))
+            elif (stats["4"] == 3):
+                if (stats["1"] >= 2):
+                    players[index].modifyHand(score=7,value=(3+0))
+                elif (stats["2"] >= 2):
+                    players[index].modifyHand(score=7,value=(3+1))
+                elif (stats["3"] >= 2):
+                    players[index].modifyHand(score=7,value=(3+2))
+                elif (stats["5"] >= 2):
+                    players[index].modifyHand(score=7,value=(3+4))
+                elif (stats["6"] >= 2):
+                    players[index].modifyHand(score=7,value=(3+5))
+                elif (stats["7"] >= 2):
+                    players[index].modifyHand(score=7,value=(3+6))
+                elif (stats["8"] >= 2):
+                    players[index].modifyHand(score=7,value=(3+7))
+                elif (stats["9"] >= 2):
+                    players[index].modifyHand(score=7,value=(3+8))
+                elif (stats["10"] >= 2):
+                    players[index].modifyHand(score=7,value=(3+9))
+                elif (stats["Jack"] >= 2):
+                    players[index].modifyHand(score=7,value=(3+10))
+                elif (stats["Queen"] >= 2):
+                    players[index].modifyHand(score=7,value=(3+11))
+                elif (stats["King"] >= 2):
+                    players[index].modifyHand(score=7,value=(3+12))
+                elif (stats["Ace"] >= 2):
+                    players[index].modifyHand(score=7,value=(3+13))
+            elif (stats["5"] == 3):
+                if (stats["1"] >= 2):
+                    players[index].modifyHand(score=7,value=(4+0))
+                elif (stats["2"] >= 2):
+                    players[index].modifyHand(score=7,value=(4+1))
+                elif (stats["3"] >= 2):
+                    players[index].modifyHand(score=7,value=(4+2))
+                elif (stats["4"] >= 2):
+                    players[index].modifyHand(score=7,value=(4+3))
+                elif (stats["6"] >= 2):
+                    players[index].modifyHand(score=7,value=(4+5))
+                elif (stats["7"] >= 2):
+                    players[index].modifyHand(score=7,value=(4+6))
+                elif (stats["8"] >= 2):
+                    players[index].modifyHand(score=7,value=(4+7))
+                elif (stats["9"] >= 2):
+                    players[index].modifyHand(score=7,value=(4+8))
+                elif (stats["10"] >= 2):
+                    players[index].modifyHand(score=7,value=(4+9))
+                elif (stats["Jack"] >= 2):
+                    players[index].modifyHand(score=7,value=(4+10))
+                elif (stats["Queen"] >= 2):
+                    players[index].modifyHand(score=7,value=(4+11))
+                elif (stats["King"] >= 2):
+                    players[index].modifyHand(score=7,value=(4+12))
+                elif (stats["Ace"] >= 2):
+                    players[index].modifyHand(score=7,value=(4+13))
+            elif (stats["6"] == 3):
+                if (stats["1"] >= 2):
+                    players[index].modifyHand(score=7,value=(5+0))
+                elif (stats["2"] >= 2):
+                    players[index].modifyHand(score=7,value=(5+1))
+                elif (stats["3"] >= 2):
+                    players[index].modifyHand(score=7,value=(5+2))
+                elif (stats["4"] >= 2):
+                    players[index].modifyHand(score=7,value=(5+3))
+                elif (stats["5"] >= 2):
+                    players[index].modifyHand(score=7,value=(5+4))
+                elif (stats["7"] >= 2):
+                    players[index].modifyHand(score=7,value=(5+6))
+                elif (stats["8"] >= 2):
+                    players[index].modifyHand(score=7,value=(5+7))
+                elif (stats["9"] >= 2):
+                    players[index].modifyHand(score=7,value=(5+8))
+                elif (stats["10"] >= 2):
+                    players[index].modifyHand(score=7,value=(5+9))
+                elif (stats["Jack"] >= 2):
+                    players[index].modifyHand(score=7,value=(5+10))
+                elif (stats["Queen"] >= 2):
+                    players[index].modifyHand(score=7,value=(5+11))
+                elif (stats["King"] >= 2):
+                    players[index].modifyHand(score=7,value=(5+12))
+                elif (stats["Ace"] >= 2):
+                    players[index].modifyHand(score=7,value=(5+13))
+            elif (stats["7"] == 3):
+                if (stats["1"] >= 2):
+                    players[index].modifyHand(score=7,value=(6+0))
+                elif (stats["2"] >= 2):
+                    players[index].modifyHand(score=7,value=(6+1))
+                elif (stats["3"] >= 2):
+                    players[index].modifyHand(score=7,value=(6+2))
+                elif (stats["4"] >= 2):
+                    players[index].modifyHand(score=7,value=(6+3))
+                elif (stats["5"] >= 2):
+                    players[index].modifyHand(score=7,value=(6+4))
+                elif (stats["6"] >= 2):
+                    players[index].modifyHand(score=7,value=(6+5))
+                elif (stats["8"] >= 2):
+                    players[index].modifyHand(score=7,value=(6+7))
+                elif (stats["9"] >= 2):
+                    players[index].modifyHand(score=7,value=(6+8))
+                elif (stats["10"] >= 2):
+                    players[index].modifyHand(score=7,value=(6+9))
+                elif (stats["Jack"] >= 2):
+                    players[index].modifyHand(score=7,value=(6+10))
+                elif (stats["Queen"] >= 2):
+                    players[index].modifyHand(score=7,value=(6+11))
+                elif (stats["King"] >= 2):
+                    players[index].modifyHand(score=7,value=(6+12))
+                elif (stats["Ace"] >= 2):
+                    players[index].modifyHand(score=7,value=(6+13))
+            elif (stats["8"] == 3):
+                if (stats["1"] >= 2):
+                    players[index].modifyHand(score=7,value=(7+0))
+                elif (stats["2"] >= 2):
+                    players[index].modifyHand(score=7,value=(7+1))
+                elif (stats["3"] >= 2):
+                    players[index].modifyHand(score=7,value=(7+2))
+                elif (stats["4"] >= 2):
+                    players[index].modifyHand(score=7,value=(7+3))
+                elif (stats["5"] >= 2):
+                    players[index].modifyHand(score=7,value=(7+4))
+                elif (stats["6"] >= 2):
+                    players[index].modifyHand(score=7,value=(7+5))
+                elif (stats["7"] >= 2):
+                    players[index].modifyHand(score=7,value=(7+6))
+                elif (stats["9"] >= 2):
+                    players[index].modifyHand(score=7,value=(7+8))
+                elif (stats["10"] >= 2):
+                    players[index].modifyHand(score=7,value=(7+9))
+                elif (stats["Jack"] >= 2):
+                    players[index].modifyHand(score=7,value=(7+10))
+                elif (stats["Queen"] >= 2):
+                    players[index].modifyHand(score=7,value=(7+11))
+                elif (stats["King"] >= 2):
+                    players[index].modifyHand(score=7,value=(7+12))
+                elif (stats["Ace"] >= 2):
+                    players[index].modifyHand(score=7,value=(7+13))
+            elif (stats["9"] == 3):
+                if (stats["1"] >= 2):
+                    players[index].modifyHand(score=7,value=(8+0))
+                elif (stats["2"] >= 2):
+                    players[index].modifyHand(score=7,value=(8+1))
+                elif (stats["3"] >= 2):
+                    players[index].modifyHand(score=7,value=(8+2))
+                elif (stats["4"] >= 2):
+                    players[index].modifyHand(score=7,value=(8+3))
+                elif (stats["5"] >= 2):
+                    players[index].modifyHand(score=7,value=(8+4))
+                elif (stats["6"] >= 2):
+                    players[index].modifyHand(score=7,value=(8+5))
+                elif (stats["7"] >= 2):
+                    players[index].modifyHand(score=7,value=(8+6))
+                elif (stats["8"] >= 2):
+                    players[index].modifyHand(score=7,value=(8+7))
+                elif (stats["10"] >= 2):
+                    players[index].modifyHand(score=7,value=(8+9))
+                elif (stats["Jack"] >= 2):
+                    players[index].modifyHand(score=7,value=(8+10))
+                elif (stats["Queen"] >= 2):
+                    players[index].modifyHand(score=7,value=(8+11))
+                elif (stats["King"] >= 2):
+                    players[index].modifyHand(score=7,value=(8+12))
+                elif (stats["Ace"] >= 2):
+                    players[index].modifyHand(score=7,value=(8+13))
+            elif (stats["10"] == 3):
+                if (stats["1"] >= 2):
+                    players[index].modifyHand(score=7,value=(9+0))
+                elif (stats["2"] >= 2):
+                    players[index].modifyHand(score=7,value=(9+1))
+                elif (stats["3"] >= 2):
+                    players[index].modifyHand(score=7,value=(9+2))
+                elif (stats["4"] >= 2):
+                    players[index].modifyHand(score=7,value=(9+3))
+                elif (stats["5"] >= 2):
+                    players[index].modifyHand(score=7,value=(9+4))
+                elif (stats["6"] >= 2):
+                    players[index].modifyHand(score=7,value=(9+5))
+                elif (stats["7"] >= 2):
+                    players[index].modifyHand(score=7,value=(9+6))
+                elif (stats["8"] >= 2):
+                    players[index].modifyHand(score=7,value=(9+7))
+                elif (stats["9"] >= 2):
+                    players[index].modifyHand(score=7,value=(9+8))
+                elif (stats["Jack"] >= 2):
+                    players[index].modifyHand(score=7,value=(9+10))
+                elif (stats["Queen"] >= 2):
+                    players[index].modifyHand(score=7,value=(9+11))
+                elif (stats["King"] >= 2):
+                    players[index].modifyHand(score=7,value=(9+12))
+                elif (stats["Ace"] >= 2):
+                    players[index].modifyHand(score=7,value=(9+13))
+            elif (stats["Jack"] == 3):
+                if (stats["1"] >= 2):
+                    players[index].modifyHand(score=7,value=(10+0))
+                elif (stats["2"] >= 2):
+                    players[index].modifyHand(score=7,value=(10+1))
+                elif (stats["3"] >= 2):
+                    players[index].modifyHand(score=7,value=(10+2))
+                elif (stats["4"] >= 2):
+                    players[index].modifyHand(score=7,value=(10+3))
+                elif (stats["5"] >= 2):
+                    players[index].modifyHand(score=7,value=(10+4))
+                elif (stats["6"] >= 2):
+                    players[index].modifyHand(score=7,value=(10+5))
+                elif (stats["7"] >= 2):
+                    players[index].modifyHand(score=7,value=(10+6))
+                elif (stats["8"] >= 2):
+                    players[index].modifyHand(score=7,value=(10+7))
+                elif (stats["9"] >= 2):
+                    players[index].modifyHand(score=7,value=(10+8))
+                elif (stats["10"] >= 2):
+                    players[index].modifyHand(score=7,value=(10+9))
+                elif (stats["Queen"] >= 2):
+                    players[index].modifyHand(score=7,value=(10+11))
+                elif (stats["King"] >= 2):
+                    players[index].modifyHand(score=7,value=(10+12))
+                elif (stats["Ace"] >= 2):
+                    players[index].modifyHand(score=7,value=(10+13))
+            elif (stats["Queen"] == 3):
+                if (stats["1"] >= 2):
+                    players[index].modifyHand(score=7,value=(11+0))
+                elif (stats["2"] >= 2):
+                    players[index].modifyHand(score=7,value=(11+1))
+                elif (stats["3"] >= 2):
+                    players[index].modifyHand(score=7,value=(11+2))
+                elif (stats["4"] >= 2):
+                    players[index].modifyHand(score=7,value=(11+3))
+                elif (stats["5"] >= 2):
+                    players[index].modifyHand(score=7,value=(11+4))
+                elif (stats["6"] >= 2):
+                    players[index].modifyHand(score=7,value=(11+5))
+                elif (stats["7"] >= 2):
+                    players[index].modifyHand(score=7,value=(11+6))
+                elif (stats["8"] >= 2):
+                    players[index].modifyHand(score=7,value=(11+7))
+                elif (stats["9"] >= 2):
+                    players[index].modifyHand(score=7,value=(11+8))
+                elif (stats["10"] >= 2):
+                    players[index].modifyHand(score=7,value=(11+9))
+                elif (stats["Jack"] >= 2):
+                    players[index].modifyHand(score=7,value=(11+10))
+                elif (stats["King"] >= 2):
+                    players[index].modifyHand(score=7,value=(11+12))
+                elif (stats["Ace"] >= 2):
+                    players[index].modifyHand(score=7,value=(11+13))
+            elif (stats["King"] == 3):
+                if (stats["1"] >= 2):
+                    players[index].modifyHand(score=7,value=(12+0))
+                elif (stats["2"] >= 2):
+                    players[index].modifyHand(score=7,value=(12+1))
+                elif (stats["3"] >= 2):
+                    players[index].modifyHand(score=7,value=(12+2))
+                elif (stats["4"] >= 2):
+                    players[index].modifyHand(score=7,value=(12+3))
+                elif (stats["5"] >= 2):
+                    players[index].modifyHand(score=7,value=(12+4))
+                elif (stats["6"] >= 2):
+                    players[index].modifyHand(score=7,value=(12+5))
+                elif (stats["7"] >= 2):
+                    players[index].modifyHand(score=7,value=(12+6))
+                elif (stats["8"] >= 2):
+                    players[index].modifyHand(score=7,value=(12+7))
+                elif (stats["9"] >= 2):
+                    players[index].modifyHand(score=7,value=(12+8))
+                elif (stats["10"] >= 2):
+                    players[index].modifyHand(score=7,value=(12+9))
+                elif (stats["Jack"] >= 2):
+                    players[index].modifyHand(score=7,value=(12+10))
+                elif (stats["Queen"] >= 2):
+                    players[index].modifyHand(score=7,value=(12+11))
+                elif (stats["Ace"] >= 2):
+                    players[index].modifyHand(score=7,value=(12+13))
+            elif (stats["Ace"] == 3):
+                if (stats["1"] >= 2):
+                    players[index].modifyHand(score=7,value=(13+0))
+                elif (stats["2"] >= 2):
+                    players[index].modifyHand(score=7,value=(13+1))
+                elif (stats["3"] >= 2):
+                    players[index].modifyHand(score=7,value=(13+2))
+                elif (stats["4"] >= 2):
+                    players[index].modifyHand(score=7,value=(13+3))
+                elif (stats["5"] >= 2):
+                    players[index].modifyHand(score=7,value=(13+4))
+                elif (stats["6"] >= 2):
+                    players[index].modifyHand(score=7,value=(13+5))
+                elif (stats["7"] >= 2):
+                    players[index].modifyHand(score=7,value=(13+6))
+                elif (stats["8"] >= 2):
+                    players[index].modifyHand(score=7,value=(13+7))
+                elif (stats["9"] >= 2):
+                    players[index].modifyHand(score=7,value=(13+8))
+                elif (stats["10"] >= 2):
+                    players[index].modifyHand(score=7,value=(13+9))
+                elif (stats["Jack"] >= 2):
+                    players[index].modifyHand(score=7,value=(13+10))
+                elif (stats["Queen"] >= 2):
+                    players[index].modifyHand(score=7,value=(13+11))
+                elif (stats["King"] >= 2):
+                    players[index].modifyHand(score=7,value=(13+12))
+            elif (stats["1"] == 2):
+                if (stats["2"] >= 3):
+                    players[index].modifyHand(score=7,value=(0+1))
+                elif (stats["3"] >= 3):
+                    players[index].modifyHand(score=7,value=(0+2))
+                elif (stats["4"] >= 3):
+                    players[index].modifyHand(score=7,value=(0+3))
+                elif (stats["5"] >= 3):
+                    players[index].modifyHand(score=7,value=(0+4))
+                elif (stats["6"] >= 3):
+                    players[index].modifyHand(score=7,value=(0+5))
+                elif (stats["7"] >= 3):
+                    players[index].modifyHand(score=7,value=(0+6))
+                elif (stats["8"] >= 3):
+                    players[index].modifyHand(score=7,value=(0+7))
+                elif (stats["9"] >= 3):
+                    players[index].modifyHand(score=7,value=(0+8))
+                elif (stats["10"] >= 3):
+                    players[index].modifyHand(score=7,value=(0+9))
+                elif (stats["Jack"] >= 3):
+                    players[index].modifyHand(score=7,value=(0+10))
+                elif (stats["Queen"] >= 3):
+                    players[index].modifyHand(score=7,value=(0+11))
+                elif (stats["King"] >= 3):
+                    players[index].modifyHand(score=7,value=(0+12))
+                elif (stats["Ace"] >= 3):
+                    players[index].modifyHand(score=7,value=(0+13))
+            elif (stats["2"] == 2):
+                if (stats["1"] >= 3):
+                    players[index].modifyHand(score=7,value=(1+0))
+                elif (stats["3"] >= 3):
+                    players[index].modifyHand(score=7,value=(1+2))
+                elif (stats["4"] >= 3):
+                    players[index].modifyHand(score=7,value=(1+3))
+                elif (stats["5"] >= 3):
+                    players[index].modifyHand(score=7,value=(1+4))
+                elif (stats["6"] >= 3):
+                    players[index].modifyHand(score=7,value=(1+5))
+                elif (stats["7"] >= 3):
+                    players[index].modifyHand(score=7,value=(1+6))
+                elif (stats["8"] >= 3):
+                    players[index].modifyHand(score=7,value=(1+7))
+                elif (stats["9"] >= 3):
+                    players[index].modifyHand(score=7,value=(1+8))
+                elif (stats["10"] >= 3):
+                    players[index].modifyHand(score=7,value=(1+9))
+                elif (stats["Jack"] >= 3):
+                    players[index].modifyHand(score=7,value=(1+10))
+                elif (stats["Queen"] >= 3):
+                    players[index].modifyHand(score=7,value=(1+11))
+                elif (stats["King"] >= 3):
+                    players[index].modifyHand(score=7,value=(1+12))
+                elif (stats["Ace"] >= 3):
+                    players[index].modifyHand(score=7,value=(1+13))
+            elif (stats["3"] == 2):
+                if (stats["1"] >= 3):
+                    players[index].modifyHand(score=7,value=(2+0))
+                elif (stats["2"] >= 3):
+                    players[index].modifyHand(score=7,value=(2+1))
+                elif (stats["4"] >= 3):
+                    players[index].modifyHand(score=7,value=(2+3))
+                elif (stats["5"] >= 3):
+                    players[index].modifyHand(score=7,value=(2+4))
+                elif (stats["6"] >= 3):
+                    players[index].modifyHand(score=7,value=(2+5))
+                elif (stats["7"] >= 3):
+                    players[index].modifyHand(score=7,value=(2+6))
+                elif (stats["8"] >= 3):
+                    players[index].modifyHand(score=7,value=(2+7))
+                elif (stats["9"] >= 3):
+                    players[index].modifyHand(score=7,value=(2+8))
+                elif (stats["10"] >= 3):
+                    players[index].modifyHand(score=7,value=(2+9))
+                elif (stats["Jack"] >= 3):
+                    players[index].modifyHand(score=7,value=(2+10))
+                elif (stats["Queen"] >= 3):
+                    players[index].modifyHand(score=7,value=(2+11))
+                elif (stats["King"] >= 3):
+                    players[index].modifyHand(score=7,value=(2+12))
+                elif (stats["Ace"] >= 3):
+                    players[index].modifyHand(score=7,value=(2+13))
+            elif (stats["4"] == 2):
+                if (stats["1"] >= 3):
+                    players[index].modifyHand(score=7,value=(3+0))
+                elif (stats["2"] >= 3):
+                    players[index].modifyHand(score=7,value=(3+1))
+                elif (stats["3"] >= 3):
+                    players[index].modifyHand(score=7,value=(3+2))
+                elif (stats["5"] >= 3):
+                    players[index].modifyHand(score=7,value=(3+4))
+                elif (stats["6"] >= 3):
+                    players[index].modifyHand(score=7,value=(3+5))
+                elif (stats["7"] >= 3):
+                    players[index].modifyHand(score=7,value=(3+6))
+                elif (stats["8"] >= 3):
+                    players[index].modifyHand(score=7,value=(3+7))
+                elif (stats["9"] >= 3):
+                    players[index].modifyHand(score=7,value=(3+8))
+                elif (stats["10"] >= 3):
+                    players[index].modifyHand(score=7,value=(3+9))
+                elif (stats["Jack"] >= 3):
+                    players[index].modifyHand(score=7,value=(3+10))
+                elif (stats["Queen"] >= 3):
+                    players[index].modifyHand(score=7,value=(3+11))
+                elif (stats["King"] >= 3):
+                    players[index].modifyHand(score=7,value=(3+12))
+                elif (stats["Ace"] >= 3):
+                    players[index].modifyHand(score=7,value=(3+13))
+            elif (stats["5"] == 2):
+                if (stats["1"] >= 3):
+                    players[index].modifyHand(score=7,value=(4+0))
+                elif (stats["2"] >= 3):
+                    players[index].modifyHand(score=7,value=(4+1))
+                elif (stats["3"] >= 3):
+                    players[index].modifyHand(score=7,value=(4+2))
+                elif (stats["4"] >= 3):
+                    players[index].modifyHand(score=7,value=(4+3))
+                elif (stats["6"] >= 3):
+                    players[index].modifyHand(score=7,value=(4+5))
+                elif (stats["7"] >= 3):
+                    players[index].modifyHand(score=7,value=(4+6))
+                elif (stats["8"] >= 3):
+                    players[index].modifyHand(score=7,value=(4+7))
+                elif (stats["9"] >= 3):
+                    players[index].modifyHand(score=7,value=(4+8))
+                elif (stats["10"] >= 3):
+                    players[index].modifyHand(score=7,value=(4+9))
+                elif (stats["Jack"] >= 3):
+                    players[index].modifyHand(score=7,value=(4+10))
+                elif (stats["Queen"] >= 3):
+                    players[index].modifyHand(score=7,value=(4+11))
+                elif (stats["King"] >= 3):
+                    players[index].modifyHand(score=7,value=(4+12))
+                elif (stats["Ace"] >= 3):
+                    players[index].modifyHand(score=7,value=(4+13))
+            elif (stats["6"] == 2):
+                if (stats["1"] >= 3):
+                    players[index].modifyHand(score=7,value=(5+0))
+                elif (stats["2"] >= 3):
+                    players[index].modifyHand(score=7,value=(5+1))
+                elif (stats["3"] >= 3):
+                    players[index].modifyHand(score=7,value=(5+2))
+                elif (stats["4"] >= 3):
+                    players[index].modifyHand(score=7,value=(5+3))
+                elif (stats["5"] >= 3):
+                    players[index].modifyHand(score=7,value=(5+4))
+                elif (stats["7"] >= 3):
+                    players[index].modifyHand(score=7,value=(5+6))
+                elif (stats["8"] >= 3):
+                    players[index].modifyHand(score=7,value=(5+7))
+                elif (stats["9"] >= 3):
+                    players[index].modifyHand(score=7,value=(5+8))
+                elif (stats["10"] >= 3):
+                    players[index].modifyHand(score=7,value=(5+9))
+                elif (stats["Jack"] >= 3):
+                    players[index].modifyHand(score=7,value=(5+10))
+                elif (stats["Queen"] >= 3):
+                    players[index].modifyHand(score=7,value=(5+11))
+                elif (stats["King"] >= 3):
+                    players[index].modifyHand(score=7,value=(5+12))
+                elif (stats["Ace"] >= 3):
+                    players[index].modifyHand(score=7,value=(5+13))
+            elif (stats["7"] == 2):
+                if (stats["1"] >= 3):
+                    players[index].modifyHand(score=7,value=(6+0))
+                elif (stats["2"] >= 3):
+                    players[index].modifyHand(score=7,value=(6+1))
+                elif (stats["3"] >= 3):
+                    players[index].modifyHand(score=7,value=(6+2))
+                elif (stats["4"] >= 3):
+                    players[index].modifyHand(score=7,value=(6+3))
+                elif (stats["5"] >= 3):
+                    players[index].modifyHand(score=7,value=(6+4))
+                elif (stats["6"] >= 3):
+                    players[index].modifyHand(score=7,value=(6+5))
+                elif (stats["8"] >= 3):
+                    players[index].modifyHand(score=7,value=(6+7))
+                elif (stats["9"] >= 3):
+                    players[index].modifyHand(score=7,value=(6+8))
+                elif (stats["10"] >= 3):
+                    players[index].modifyHand(score=7,value=(6+9))
+                elif (stats["Jack"] >= 3):
+                    players[index].modifyHand(score=7,value=(6+10))
+                elif (stats["Queen"] >= 3):
+                    players[index].modifyHand(score=7,value=(6+11))
+                elif (stats["King"] >= 3):
+                    players[index].modifyHand(score=7,value=(6+12))
+                elif (stats["Ace"] >= 3):
+                    players[index].modifyHand(score=7,value=(6+13))
+            elif (stats["8"] == 2):
+                if (stats["1"] >= 3):
+                    players[index].modifyHand(score=7,value=(7+0))
+                elif (stats["2"] >= 3):
+                    players[index].modifyHand(score=7,value=(7+1))
+                elif (stats["3"] >= 3):
+                    players[index].modifyHand(score=7,value=(7+2))
+                elif (stats["4"] >= 3):
+                    players[index].modifyHand(score=7,value=(7+3))
+                elif (stats["5"] >= 3):
+                    players[index].modifyHand(score=7,value=(7+4))
+                elif (stats["6"] >= 3):
+                    players[index].modifyHand(score=7,value=(7+5))
+                elif (stats["7"] >= 3):
+                    players[index].modifyHand(score=7,value=(7+6))
+                elif (stats["9"] >= 3):
+                    players[index].modifyHand(score=7,value=(7+8))
+                elif (stats["10"] >= 3):
+                    players[index].modifyHand(score=7,value=(7+9))
+                elif (stats["Jack"] >= 3):
+                    players[index].modifyHand(score=7,value=(7+10))
+                elif (stats["Queen"] >= 3):
+                    players[index].modifyHand(score=7,value=(7+11))
+                elif (stats["King"] >= 3):
+                    players[index].modifyHand(score=7,value=(7+12))
+                elif (stats["Ace"] >= 3):
+                    players[index].modifyHand(score=7,value=(7+13))
+            elif (stats["9"] == 2):
+                if (stats["1"] >= 3):
+                    players[index].modifyHand(score=7,value=(8+0))
+                elif (stats["2"] >= 3):
+                    players[index].modifyHand(score=7,value=(8+1))
+                elif (stats["3"] >= 3):
+                    players[index].modifyHand(score=7,value=(8+2))
+                elif (stats["4"] >= 3):
+                    players[index].modifyHand(score=7,value=(8+3))
+                elif (stats["5"] >= 3):
+                    players[index].modifyHand(score=7,value=(8+4))
+                elif (stats["6"] >= 3):
+                    players[index].modifyHand(score=7,value=(8+5))
+                elif (stats["7"] >= 3):
+                    players[index].modifyHand(score=7,value=(8+6))
+                elif (stats["8"] >= 3):
+                    players[index].modifyHand(score=7,value=(8+7))
+                elif (stats["10"] >= 3):
+                    players[index].modifyHand(score=7,value=(8+9))
+                elif (stats["Jack"] >= 3):
+                    players[index].modifyHand(score=7,value=(8+10))
+                elif (stats["Queen"] >= 3):
+                    players[index].modifyHand(score=7,value=(8+11))
+                elif (stats["King"] >= 3):
+                    players[index].modifyHand(score=7,value=(8+12))
+                elif (stats["Ace"] >= 3):
+                    players[index].modifyHand(score=7,value=(8+13))
+            elif (stats["10"] == 2):
+                if (stats["1"] >= 3):
+                    players[index].modifyHand(score=7,value=(9+0))
+                elif (stats["2"] >= 3):
+                    players[index].modifyHand(score=7,value=(9+1))
+                elif (stats["3"] >= 3):
+                    players[index].modifyHand(score=7,value=(9+2))
+                elif (stats["4"] >= 3):
+                    players[index].modifyHand(score=7,value=(9+3))
+                elif (stats["5"] >= 3):
+                    players[index].modifyHand(score=7,value=(9+4))
+                elif (stats["6"] >= 3):
+                    players[index].modifyHand(score=7,value=(9+5))
+                elif (stats["7"] >= 3):
+                    players[index].modifyHand(score=7,value=(9+6))
+                elif (stats["8"] >= 3):
+                    players[index].modifyHand(score=7,value=(9+7))
+                elif (stats["9"] >= 3):
+                    players[index].modifyHand(score=7,value=(9+8))
+                elif (stats["Jack"] >= 3):
+                    players[index].modifyHand(score=7,value=(9+10))
+                elif (stats["Queen"] >= 3):
+                    players[index].modifyHand(score=7,value=(9+11))
+                elif (stats["King"] >= 3):
+                    players[index].modifyHand(score=7,value=(9+12))
+                elif (stats["Ace"] >= 3):
+                    players[index].modifyHand(score=7,value=(9+13))
+            elif (stats["Jack"] == 2):
+                if (stats["1"] >= 3):
+                    players[index].modifyHand(score=7,value=(10+0))
+                elif (stats["2"] >= 3):
+                    players[index].modifyHand(score=7,value=(10+1))
+                elif (stats["3"] >= 3):
+                    players[index].modifyHand(score=7,value=(10+2))
+                elif (stats["4"] >= 3):
+                    players[index].modifyHand(score=7,value=(10+3))
+                elif (stats["5"] >= 3):
+                    players[index].modifyHand(score=7,value=(10+4))
+                elif (stats["6"] >= 3):
+                    players[index].modifyHand(score=7,value=(10+5))
+                elif (stats["7"] >= 3):
+                    players[index].modifyHand(score=7,value=(10+6))
+                elif (stats["8"] >= 3):
+                    players[index].modifyHand(score=7,value=(10+7))
+                elif (stats["9"] >= 3):
+                    players[index].modifyHand(score=7,value=(10+8))
+                elif (stats["10"] >= 3):
+                    players[index].modifyHand(score=7,value=(10+9))
+                elif (stats["Queen"] >= 3):
+                    players[index].modifyHand(score=7,value=(10+11))
+                elif (stats["King"] >= 3):
+                    players[index].modifyHand(score=7,value=(10+12))
+                elif (stats["Ace"] >= 3):
+                    players[index].modifyHand(score=7,value=(10+13))
+            elif (stats["Queen"] == 2):
+                if (stats["1"] >= 3):
+                    players[index].modifyHand(score=7,value=(11+0))
+                elif (stats["2"] >= 3):
+                    players[index].modifyHand(score=7,value=(11+1))
+                elif (stats["3"] >= 3):
+                    players[index].modifyHand(score=7,value=(11+2))
+                elif (stats["4"] >= 3):
+                    players[index].modifyHand(score=7,value=(11+3))
+                elif (stats["5"] >= 3):
+                    players[index].modifyHand(score=7,value=(11+4))
+                elif (stats["6"] >= 3):
+                    players[index].modifyHand(score=7,value=(11+5))
+                elif (stats["7"] >= 3):
+                    players[index].modifyHand(score=7,value=(11+6))
+                elif (stats["8"] >= 3):
+                    players[index].modifyHand(score=7,value=(11+7))
+                elif (stats["9"] >= 3):
+                    players[index].modifyHand(score=7,value=(11+8))
+                elif (stats["10"] >= 3):
+                    players[index].modifyHand(score=7,value=(11+9))
+                elif (stats["Jack"] >= 3):
+                    players[index].modifyHand(score=7,value=(11+10))
+                elif (stats["King"] >= 3):
+                    players[index].modifyHand(score=7,value=(11+12))
+                elif (stats["Ace"] >= 3):
+                    players[index].modifyHand(score=7,value=(11+13))
+            elif (stats["King"] == 2):
+                if (stats["1"] >= 3):
+                    players[index].modifyHand(score=7,value=(12+0))
+                elif (stats["2"] >= 3):
+                    players[index].modifyHand(score=7,value=(12+1))
+                elif (stats["3"] >= 3):
+                    players[index].modifyHand(score=7,value=(12+2))
+                elif (stats["4"] >= 3):
+                    players[index].modifyHand(score=7,value=(12+3))
+                elif (stats["5"] >= 3):
+                    players[index].modifyHand(score=7,value=(12+4))
+                elif (stats["6"] >= 3):
+                    players[index].modifyHand(score=7,value=(12+5))
+                elif (stats["7"] >= 3):
+                    players[index].modifyHand(score=7,value=(12+6))
+                elif (stats["8"] >= 3):
+                    players[index].modifyHand(score=7,value=(12+7))
+                elif (stats["9"] >= 3):
+                    players[index].modifyHand(score=7,value=(12+8))
+                elif (stats["10"] >= 3):
+                    players[index].modifyHand(score=7,value=(12+9))
+                elif (stats["Jack"] >= 3):
+                    players[index].modifyHand(score=7,value=(12+10))
+                elif (stats["Queen"] >= 3):
+                    players[index].modifyHand(score=7,value=(12+11))
+                elif (stats["Ace"] >= 3):
+                    players[index].modifyHand(score=7,value=(12+13))
+            elif (stats["Ace"] == 2):
+                if (stats["1"] >= 3):
+                    players[index].modifyHand(score=7,value=(13+0))
+                elif (stats["2"] >= 3):
+                    players[index].modifyHand(score=7,value=(13+1))
+                elif (stats["3"] >= 3):
+                    players[index].modifyHand(score=7,value=(13+2))
+                elif (stats["4"] >= 3):
+                    players[index].modifyHand(score=7,value=(13+3))
+                elif (stats["5"] >= 3):
+                    players[index].modifyHand(score=7,value=(13+4))
+                elif (stats["6"] >= 3):
+                    players[index].modifyHand(score=7,value=(13+5))
+                elif (stats["7"] >= 3):
+                    players[index].modifyHand(score=7,value=(13+6))
+                elif (stats["8"] >= 3):
+                    players[index].modifyHand(score=7,value=(13+7))
+                elif (stats["9"] >= 3):
+                    players[index].modifyHand(score=7,value=(13+8))
+                elif (stats["10"] >= 3):
+                    players[index].modifyHand(score=7,value=(13+9))
+                elif (stats["Jack"] >= 3):
+                    players[index].modifyHand(score=7,value=(13+10))
+                elif (stats["Queen"] >= 3):
+                    players[index].modifyHand(score=7,value=(13+11))
+                elif (stats["King"] >= 3):
+                    players[index].modifyHand(score=7,value=(13+12))
+
+            """ if (stats["1"] == 3) or (stats["2"] == 3) or (stats["3"] >= 3) or (stats["4"] == 3) or (stats["5"] == 3) or (stats["6"] == 3) or (stats["7"] == 3) or (stats["8"] == 3) or (stats["9"] == 3) or (stats["10"] == 3) or (stats["Jack"] == 3) or (stats["Queen"] == 3) or (stats["King"] == 3) or (stats["Ace"] == 3):
                     players[index].modifyHandValue(score=7)
             elif (stats["1"] == 3) or (stats["2"] == 3) or (stats["3"] == 3) or (stats["4"] == 3) or (stats["5"] == 3) or (stats["6"] == 3) or (stats["7"] == 3) or (stats["8"] == 3) or (stats["9"] == 3) or (stats["10"] == 3) or (stats["Jack"] == 3) or (stats["Queen"] == 3) or (stats["King"] == 3) or (stats["Ace"] == 3):
-                if (stats["1"] == 2) or (stats["2"] == 2) or (stats["3"] == 2) or (stats["4"] == 2) or (stats["5"] == 2) or (stats["6"] == 2) or (stats["7"] == 2) or (stats["8"] == 2) or (stats["9"] == 2) or (stats["10"] == 2) or (stats["Jack"] == 2) or (stats["Queen"] == 2) or (stats["King"] == 2) or (stats["Ace"] == 2):
-                    players[index].modifyHandValue(score=7)
+                if (stats["1"] == 3) or (stats["2"] == 2) or (stats["3"] == 2) or (stats["4"] == 2) or (stats["5"] == 2) or (stats["6"] == 2) or (stats["7"] == 2) or (stats["8"] == 2) or (stats["9"] == 2) or (stats["10"] == 2) or (stats["Jack"] == 2) or (stats["Queen"] == 2) or (stats["King"] == 2) or (stats["Ace"] == 2):
+                    players[index].modifyHandValue(score=7) """
             
             # 6  - checking for a flush (five of the same suit) - this should be the result given
             if (stats["d"] >= 5) or (stats["c"] >= 5) or (stats["h"] >= 5) or (stats["s"] >= 5):
