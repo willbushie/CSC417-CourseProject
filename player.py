@@ -50,7 +50,7 @@ class player:
         Modify self.handVaue to evaluate winning positions.\n Default is: `score=0` and `value=0`.\n
         `score` is the type of hands rank to win. `value` is the score within that rank to win.
         """
-        if (score == 0):
+        if (score == 0) and (value == 0):
             self.handValue["score"] = 0
             self.handValue["value"] = 0
         elif (score != 0):
@@ -109,6 +109,16 @@ class player:
             return self.hand["c1"]
         elif (card == 2):
             return self.hand["c2"]
+
+    def display(self):
+        """
+        This method will display all class attributes.
+        """
+        print("label: ",self.label)
+        print("chips: ",self.chips)
+        print("hand: ",self.displayHandPretty())
+        print("callStatus: ",self.callStatus)
+        print("handValue: ",self.handValue)
 
     def turn(self,call):
         """

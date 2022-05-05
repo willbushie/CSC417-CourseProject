@@ -384,7 +384,7 @@ class game:
                     players[index].modifyHandValue(score=7)
             
             # 6  - checking for a flush (five of the same suit) - this should be the result given
-            if (stats["d"] == 5) or (stats["c"] == 5) or (stats["h"] == 5) or (stats["s"] == 5):
+            if (stats["d"] >= 5) or (stats["c"] >= 5) or (stats["h"] >= 5) or (stats["s"] >= 5):
                 players[index].modifyHandValue(score=6)
             
             # 5  - checking for a straight (five cards in rank order)
