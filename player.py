@@ -142,7 +142,7 @@ class player:
         elif(action.lower() == "raise"):
             while(True):
                 amount = int(input("How much would you like to raise the call by?\n"))
-                if (amount > 0) and ((self.chips - amount) > 0):
+                if (amount > 0) and ((self.chips - amount) >= 0):
                     break
                 elif (amount <= 0) or ((self.chips - amount) < 0):
                     print("This is an invalid amount to raise by. Please try again.")

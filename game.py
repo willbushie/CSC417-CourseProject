@@ -108,6 +108,7 @@ class game:
         if (len(activePlayers) == 1):
             activePlayers[0].modifyChips(amount=pot,transactionType=1)
             print(f"Player {activePlayers[0].getLabel()} has won the round. Winnings: {pot}. Chips: {activePlayers[0].getChipValue()}")
+            print(f"Winning HandValues: {activePlayers[0].getHandValue()}")
         elif(len(activePlayers) > 1):
             self.evaluateHands(shownCards,activePlayers)
             # select the winning player
@@ -122,10 +123,11 @@ class game:
             if (len(winningPlayers) == 1):
                 winningPlayers[0].modifyChips(pot,transactionType=1)
                 print(f"Player {winningPlayers[0].getLabel()} has won the round. Winnings: {pot}. Chips: {winningPlayers[0].getChipValue()}")
+                print(f"Winning HandValues: {winningPlayers[0].getHandValue()}")
             elif (len(winningPlayers) > 1):
                 values = []
                 for index in range(len(winningPlayers)):
-                    values.append(winningPlayers[index].getHandValue["value"])
+                    values.append(winningPlayers[index].getHandValue()["value"])
                 maxValue = max(values)
                 finalWinners = []
                 for index in range(len(winningPlayers)):
@@ -135,9 +137,11 @@ class game:
                     for index in range(len(winningPlayers)):
                         finalWinners[index].modifyChips((pot/len(finalWinners)),transactionType=1)
                         print(f"Player {finalWinners[index].getLabel()} has tied for the win. Winnings: {pot/len(finalWinners)}. Chips: {finalWinners[index].getChipValue()}")
+                        print(f"Winning HandValues: {finalWinners[index].getHandValue()}")
                 elif (len(finalWinners) == 1):
                     finalWinners[0].modifyChips((pot/len(winningPlayers)),transactionType=1)
-                    print(f"Player {winningPlayers[index].getLabel()} has tied for the win. Winnings: {pot/len(winningPlayers)}. Chips: {finalWinners[index].getChipValue()}")
+                    print(f"Player {winningPlayers[0].getLabel()} has tied for the win. Winnings: {pot/len(winningPlayers)}. Chips: {finalWinners[0].getChipValue()}")
+                    print(f"Winning HandValues: {finalWinners[0].getHandValue()}")
         # ensure a player is removed from the self.players list if their chips are 0
         index = 0
         while(index < len(self.activePlayers)):
