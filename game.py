@@ -111,11 +111,11 @@ class game:
             # select the winning player
             scores = []
             for index in range(len(activePlayers)):
-                scores.append(activePlayers[index].getHandValue())
+                scores.append(activePlayers[index].getHandValue()["score"])
             maxScore = max(scores)
             winningPlayers = []
             for index in range(len(activePlayers)):
-                if (activePlayers[index].getHandValue() == maxScore):
+                if (activePlayers[index].getHandValue()["score"] == maxScore):
                     winningPlayers.append(activePlayers[index])
             if (len(winningPlayers) == 1):
                 winningPlayers[0].modifyChips(pot,transactiontype=1)
