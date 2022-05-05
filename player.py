@@ -120,7 +120,7 @@ class player:
         print("callStatus: ",self.callStatus)
         print("handValue: ",self.handValue)
 
-    def turn(self,call):
+    def turn(self,call,cards):
         """
         This method holds the players actions when it is their turn to bet.
         """

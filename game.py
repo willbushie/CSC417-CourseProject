@@ -60,9 +60,9 @@ class game:
                         if (len(shownCards) != 0):
                             print(f"The current table cards are: {self.prettyPrintShownCards(shownCards)}.")
                         if (previousCall != call):
-                            currPlayerResult = p.turn(call)
+                            currPlayerResult = p.turn(call,shownCards)
                         elif (previousCall == call):
-                            currPlayerResult = p.turn(0)
+                            currPlayerResult = p.turn(0,shownCards)
                         # if a player checks, modify call status, and move on
                         if (currPlayerResult["action"] == "check"):
                             print(f"Player {p.getLabel()} has checked. Remaining chips: {p.getChipValue()}. Moving to next player.")
