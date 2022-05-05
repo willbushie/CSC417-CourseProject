@@ -6,10 +6,10 @@ class game:
     """
     The Poker Game class.
     """
-    def __init__(self,players,call,play=False) -> None:
-        if len(players) < 2:
+    def __init__(self,players,call,play=True,cards=None):
+        if (len(players) < 2) and (play == True):
             print("Number of players needs to be two or more.")
-            return Exception
+            return Exception # change this to something that makes more sense
         self.players = players
         self.activePlayers = players
         self.call = call
@@ -20,6 +20,9 @@ class game:
             # 1) only on player remains (because players quit)
             # 2) one player wins (only player with chips)
             self.newRound()
+        # test evaluateHands Function
+        elif (play == False):
+            self.evaluateHands(cards,players)
 
     def newRound(self):
         """
@@ -154,14 +157,21 @@ class game:
         elif (numOfPlayers != betCount):
             return False
     
-    def cardInList(list,rank,suit):
+    def cardInList(self,list,rank,suit):
         """
         This method returns a true or false, on whether the card is present in the passed list or not.
         """
-        for i in range(len(list)):
-            if (list[i].getSuit() == suit) and (list[i].getRank() == rank):
-                return True
-        return False    
+        integerList = ["1","2","3","4","5","6","7","8","9","10","Jack","Queen","King","Ace"]
+        alphabeticalList = ["One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Jack","Queen","King","Ace"]
+        for c in list:
+            if (rank in integerList):
+                if (c.getRank() == alphabeticalList[integerList.index(rank)]) and (c.getSuit() == suit):
+                    return True
+            elif (rank in alphabeticalList):
+                if (c.getRank() == rank) and (c.getSuit() == suit):
+                    return True
+        return False
+
 
     def prettyPrintShownCards(self,cards):
         """
@@ -235,196 +245,196 @@ class game:
             # 10 - checking for royal flush (5 highest cards of the same suit)
             if (stats["10"] >= 1) and (stats["Jack"] >= 1) and (stats["Queen"] >= 1) and (stats["King"] >= 1) and (stats["Ace"] >= 1):
                 if (self.cardInList(evalCards,"10","Clubs") == True) and (self.cardInList(evalCards,"Jack","Clubs") == True) and (self.cardInList(evalCards,"Queen","Clubs") == True) and (self.cardInList(evalCards,"King","Clubs") == True) and (self.cardInList(evalCards,"Ace","Clubs") == True):
-                    players[index].modifyHandValue(value=10)
+                    players[index].modifyHandValue(score=10)
                 elif (self.cardInList(evalCards,"10","Hearts") == True) and (self.cardInList(evalCards,"Jack","Hearts") == True) and (self.cardInList(evalCards,"Queen","Hearts") == True) and (self.cardInList(evalCards,"King","Hearts") == True) and (self.cardInList(evalCards,"Ace","Hearts") == True):
-                    players[index].modifyHandValue(value=10)
+                    players[index].modifyHandValue(score=10)
                 elif (self.cardInList(evalCards,"10","Diamonds") == True) and (self.cardInList(evalCards,"Jack","Diamonds") == True) and (self.cardInList(evalCards,"Queen","Diamonds") == True) and (self.cardInList(evalCards,"King","Diamonds") == True) and (self.cardInList(evalCards,"Ace","Diamonds") == True):
-                    players[index].modifyHandValue(value=10)
+                    players[index].modifyHandValue(score=10)
                 elif (self.cardInList(evalCards,"10","Spades") == True) and (self.cardInList(evalCards,"Jack","Spades") == True) and (self.cardInList(evalCards,"Queen","Spades") == True) and (self.cardInList(evalCards,"King","Spades") == True) and (self.cardInList(evalCards,"Ace","Spades") == True):
-                    players[index].modifyHandValue(value=10)
+                    players[index].modifyHandValue(score=10)
             
             # 9  - checking for straight flush (five cards of the same suit in order)
             if (stats["1"] >= 1) and (stats["2"] >= 1) and (stats["3"] >= 1) and (stats["4"] >= 1) and (stats["5"] >= 1):
                 if (self.cardInList(evalCards,"1","Clubs") == True) and (self.cardInList(evalCards,"2","Clubs") == True) and (self.cardInList(evalCards,"3","Clubs") == True) and (self.cardInList(evalCards,"4","Clubs") == True) and (self.cardInList(evalCards,"5","Clubs") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
                 elif (self.cardInList(evalCards,"1","Diamonds") == True) and (self.cardInList(evalCards,"2","Diamonds") == True) and (self.cardInList(evalCards,"3","Diamonds") == True) and (self.cardInList(evalCards,"4","Diamonds") == True) and (self.cardInList(evalCards,"5","Diamonds") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
                 elif (self.cardInList(evalCards,"1","Hearts") == True) and (self.cardInList(evalCards,"2","Hearts") == True) and (self.cardInList(evalCards,"3","Hearts") == True) and (self.cardInList(evalCards,"4","Hearts") == True) and (self.cardInList(evalCards,"5","Hearts") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
                 elif (self.cardInList(evalCards,"1","Spades") == True) and (self.cardInList(evalCards,"2","Spades") == True) and (self.cardInList(evalCards,"3","Spades") == True) and (self.cardInList(evalCards,"4","Spades") == True) and (self.cardInList(evalCards,"5","Spades") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
             elif (stats["2"] >= 1) and (stats["3"] >= 1) and (stats["4"] >= 1) and (stats["5"] >= 1) and (stats["6"] >= 1):
                 if (self.cardInList(evalCards,"2","Clubs") == True) and (self.cardInList(evalCards,"3","Clubs") == True) and (self.cardInList(evalCards,"4","Clubs") == True) and (self.cardInList(evalCards,"5","Clubs") == True) and (self.cardInList(evalCards,"6","Clubs") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
                 elif (self.cardInList(evalCards,"2","Diamonds") == True) and (self.cardInList(evalCards,"3","Diamonds") == True) and (self.cardInList(evalCards,"4","Diamonds") == True) and (self.cardInList(evalCards,"5","Diamonds") == True) and (self.cardInList(evalCards,"6","Diamonds") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
                 elif (self.cardInList(evalCards,"2","Hearts") == True) and (self.cardInList(evalCards,"3","Hearts") == True) and (self.cardInList(evalCards,"4","Hearts") == True) and (self.cardInList(evalCards,"5","Hearts") == True) and (self.cardInList(evalCards,"6","Hearts") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
                 elif (self.cardInList(evalCards,"2","Spades") == True) and (self.cardInList(evalCards,"3","Spades") == True) and (self.cardInList(evalCards,"4","Spades") == True) and (self.cardInList(evalCards,"5","Spades") == True) and (self.cardInList(evalCards,"6","Spades") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
             elif (stats["3"] >= 1) and (stats["4"] >= 1) and (stats["5"] >= 1) and (stats["6"] >= 1) and (stats["7"] >= 1):
                 if (self.cardInList(evalCards,"3","Clubs") == True) and (self.cardInList(evalCards,"4","Clubs") == True) and (self.cardInList(evalCards,"5","Clubs") == True) and (self.cardInList(evalCards,"6","Clubs") == True) and (self.cardInList(evalCards,"7","Clubs") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
                 elif (self.cardInList(evalCards,"3","Diamonds") == True) and (self.cardInList(evalCards,"4","Diamonds") == True) and (self.cardInList(evalCards,"5","Diamonds") == True) and (self.cardInList(evalCards,"6","Diamonds") == True) and (self.cardInList(evalCards,"7","Diamonds") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
                 elif (self.cardInList(evalCards,"3","Hearts") == True) and (self.cardInList(evalCards,"4","Hearts") == True) and (self.cardInList(evalCards,"5","Hearts") == True) and (self.cardInList(evalCards,"6","Hearts") == True) and (self.cardInList(evalCards,"7","Hearts") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
                 elif (self.cardInList(evalCards,"3","Spades") == True) and (self.cardInList(evalCards,"4","Spades") == True) and (self.cardInList(evalCards,"5","Spades") == True) and (self.cardInList(evalCards,"6","Spades") == True) and (self.cardInList(evalCards,"7","Spades") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
             elif (stats["4"] >= 1) and (stats["5"] >= 1) and (stats["6"] >= 1) and (stats["7"] >= 1) and (stats["8"] >= 1):
                 if (self.cardInList(evalCards,"4","Clubs") == True) and (self.cardInList(evalCards,"5","Clubs") == True) and (self.cardInList(evalCards,"6","Clubs") == True) and (self.cardInList(evalCards,"7","Clubs") == True) and (self.cardInList(evalCards,"8","Clubs") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
                 elif (self.cardInList(evalCards,"4","Diamonds") == True) and (self.cardInList(evalCards,"5","Diamonds") == True) and (self.cardInList(evalCards,"6","Diamonds") == True) and (self.cardInList(evalCards,"7","Diamonds") == True) and (self.cardInList(evalCards,"8","Diamonds") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
                 elif (self.cardInList(evalCards,"4","Hearts") == True) and (self.cardInList(evalCards,"5","Hearts") == True) and (self.cardInList(evalCards,"6","Hearts") == True) and (self.cardInList(evalCards,"7","Hearts") == True) and (self.cardInList(evalCards,"8","Hearts") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
                 elif (self.cardInList(evalCards,"4","Spades") == True) and (self.cardInList(evalCards,"5","Spades") == True) and (self.cardInList(evalCards,"6","Spades") == True) and (self.cardInList(evalCards,"7","Spades") == True) and (self.cardInList(evalCards,"8","Spades") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
             elif (stats["5"] >= 1) and (stats["6"] >= 1) and (stats["7"] >= 1) and (stats["8"] >= 1) and (stats["9"] >= 1):
                 if (self.cardInList(evalCards,"5","Clubs") == True) and (self.cardInList(evalCards,"6","Clubs") == True) and (self.cardInList(evalCards,"7","Clubs") == True) and (self.cardInList(evalCards,"8","Clubs") == True) and (self.cardInList(evalCards,"9","Clubs") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
                 elif (self.cardInList(evalCards,"5","Diamonds") == True) and (self.cardInList(evalCards,"6","Diamonds") == True) and (self.cardInList(evalCards,"7","Diamonds") == True) and (self.cardInList(evalCards,"8","Diamonds") == True) and (self.cardInList(evalCards,"9","Diamonds") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
                 elif (self.cardInList(evalCards,"5","Hearts") == True) and (self.cardInList(evalCards,"6","Hearts") == True) and (self.cardInList(evalCards,"7","Hearts") == True) and (self.cardInList(evalCards,"8","Hearts") == True) and (self.cardInList(evalCards,"9","Hearts") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
                 elif (self.cardInList(evalCards,"5","Spades") == True) and (self.cardInList(evalCards,"6","Spades") == True) and (self.cardInList(evalCards,"7","Spades") == True) and (self.cardInList(evalCards,"8","Spades") == True) and (self.cardInList(evalCards,"9","Spades") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
             elif (stats["6"] >= 1) and (stats["7"] >= 1) and (stats["8"] >= 1) and (stats["9"] >= 1) and (stats["10"] >= 1):
                 if (self.cardInList(evalCards,"6","Clubs") == True) and (self.cardInList(evalCards,"7","Clubs") == True) and (self.cardInList(evalCards,"8","Clubs") == True) and (self.cardInList(evalCards,"9","Clubs") == True) and (self.cardInList(evalCards,"10","Clubs") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
                 elif (self.cardInList(evalCards,"6","Diamonds") == True) and (self.cardInList(evalCards,"7","Diamonds") == True) and (self.cardInList(evalCards,"8","Diamonds") == True) and (self.cardInList(evalCards,"9","Diamonds") == True) and (self.cardInList(evalCards,"10","Diamonds") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
                 elif (self.cardInList(evalCards,"6","Hearts") == True) and (self.cardInList(evalCards,"7","Hearts") == True) and (self.cardInList(evalCards,"8","Hearts") == True) and (self.cardInList(evalCards,"9","Hearts") == True) and (self.cardInList(evalCards,"10","Hearts") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
                 elif (self.cardInList(evalCards,"6","Spades") == True) and (self.cardInList(evalCards,"7","Spades") == True) and (self.cardInList(evalCards,"8","Spades") == True) and (self.cardInList(evalCards,"9","Spades") == True) and (self.cardInList(evalCards,"10","Spades") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
             elif (stats["7"] >= 1) and (stats["8"] >= 1) and (stats["9"] >= 1) and (stats["10"] >= 1) and (stats["Jack"] >= 1):
                 if (self.cardInList(evalCards,"7","Clubs") == True) and (self.cardInList(evalCards,"8","Clubs") == True) and (self.cardInList(evalCards,"9","Clubs") == True) and (self.cardInList(evalCards,"10","Clubs") == True) and (self.cardInList(evalCards,"Jack","Clubs") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
                 elif (self.cardInList(evalCards,"7","Diamonds") == True) and (self.cardInList(evalCards,"8","Diamonds") == True) and (self.cardInList(evalCards,"9","Diamonds") == True) and (self.cardInList(evalCards,"10","Diamonds") == True) and (self.cardInList(evalCards,"Jack","Diamonds") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
                 elif (self.cardInList(evalCards,"7","Hearts") == True) and (self.cardInList(evalCards,"8","Hearts") == True) and (self.cardInList(evalCards,"9","Hearts") == True) and (self.cardInList(evalCards,"10","Hearts") == True) and (self.cardInList(evalCards,"Jack","Hearts") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
                 elif (self.cardInList(evalCards,"7","Spades") == True) and (self.cardInList(evalCards,"8","Spades") == True) and (self.cardInList(evalCards,"9","Spades") == True) and (self.cardInList(evalCards,"10","Spades") == True) and (self.cardInList(evalCards,"Jack","Spades") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
             elif (stats["8"] >= 1) and (stats["9"] >= 1) and (stats["10"] >= 1) and (stats["Jack"] >= 1) and (stats["Queen"] >= 1):
                 if (self.cardInList(evalCards,"8","Clubs") == True) and (self.cardInList(evalCards,"9","Clubs") == True) and (self.cardInList(evalCards,"10","Clubs") == True) and (self.cardInList(evalCards,"Jack","Clubs") == True) and (self.cardInList(evalCards,"Queen","Clubs") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
                 elif (self.cardInList(evalCards,"8","Diamonds") == True) and (self.cardInList(evalCards,"9","Diamonds") == True) and (self.cardInList(evalCards,"10","Diamonds") == True) and (self.cardInList(evalCards,"Jack","Diamonds") == True) and (self.cardInList(evalCards,"Queen","Diamonds") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
                 elif (self.cardInList(evalCards,"8","Hearts") == True) and (self.cardInList(evalCards,"9","Hearts") == True) and (self.cardInList(evalCards,"10","Hearts") == True) and (self.cardInList(evalCards,"Jack","Hearts") == True) and (self.cardInList(evalCards,"Queen","Hearts") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
                 elif (self.cardInList(evalCards,"8","Spades") == True) and (self.cardInList(evalCards,"9","Spades") == True) and (self.cardInList(evalCards,"10","Spades") == True) and (self.cardInList(evalCards,"Jack","Spades") == True) and (self.cardInList(evalCards,"Queen","Spades") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
             elif (stats["9"] >= 1) and (stats["10"] >= 1) and (stats["Jack"] >= 1) and (stats["Queen"] >= 1) and (stats["King"] >= 1):
                 if (self.cardInList(evalCards,"9","Clubs") == True) and (self.cardInList(evalCards,"10","Clubs") == True) and (self.cardInList(evalCards,"Jack","Clubs") == True) and (self.cardInList(evalCards,"Queen","Clubs") == True) and (self.cardInList(evalCards,"King","Clubs") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
                 elif (self.cardInList(evalCards,"9","Diamonds") == True) and (self.cardInList(evalCards,"10","Diamonds") == True) and (self.cardInList(evalCards,"Jack","Diamonds") == True) and (self.cardInList(evalCards,"Queen","Diamonds") == True) and (self.cardInList(evalCards,"King","Diamonds") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
                 elif (self.cardInList(evalCards,"9","Hearts") == True) and (self.cardInList(evalCards,"10","Hearts") == True) and (self.cardInList(evalCards,"Jack","Hearts") == True) and (self.cardInList(evalCards,"Queen","Hearts") == True) and (self.cardInList(evalCards,"King","Hearts") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
                 elif (self.cardInList(evalCards,"9","Spades") == True) and (self.cardInList(evalCards,"10","Spades") == True) and (self.cardInList(evalCards,"Jack","Spades") == True) and (self.cardInList(evalCards,"Queen","Spades") == True) and (self.cardInList(evalCards,"King","Spades") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
             elif (stats["10"] >= 1) and (stats["Jack"] >= 1) and (stats["Queen"] >= 1) and (stats["King"] >= 1) and (stats["Ace"] >= 1):
                 if (self.cardInList(evalCards,"10","Clubs") == True) and (self.cardInList(evalCards,"Jack","Clubs") == True) and (self.cardInList(evalCards,"Queen","Clubs") == True) and (self.cardInList(evalCards,"King","Clubs") == True) and (self.cardInList(evalCards,"Ace","Clubs") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
                 elif (self.cardInList(evalCards,"10","Diamonds") == True) and (self.cardInList(evalCards,"Jack","Diamonds") == True) and (self.cardInList(evalCards,"Queen","Diamonds") == True) and (self.cardInList(evalCards,"King","Diamonds") == True) and (self.cardInList(evalCards,"Ace","Diamonds") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
                 elif (self.cardInList(evalCards,"10","Hearts") == True) and (self.cardInList(evalCards,"Jack","Hearts") == True) and (self.cardInList(evalCards,"Queen","Hearts") == True) and (self.cardInList(evalCards,"King","Hearts") == True) and (self.cardInList(evalCards,"Ace","Hearts") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
                 elif (self.cardInList(evalCards,"10","Spades") == True) and (self.cardInList(evalCards,"Jack","Spades") == True) and (self.cardInList(evalCards,"Queen","Spades") == True) and (self.cardInList(evalCards,"King","Spades") == True) and (self.cardInList(evalCards,"Ace","Spades") == True):
-                    players[index].modifyHandValue(value=9)
+                    players[index].modifyHandValue(score=9)
             
             # 8  - checking for four of a kind
             if (stats["1"] == 4) or (stats["2"] == 4) or (stats["3"] == 4) or (stats["4"] == 4) or (stats["5"] == 4) or (stats["6"] == 4) or (stats["7"] == 4) or (stats["8"] == 4) or (stats["9"] == 4) or (stats["10"] == 4) or (stats["Jack"] == 4) or (stats["Queen"] == 4) or (stats["King"] == 4) or (stats["Ace"] == 4):
-                players[index].modifyHandValue(value=8)
+                players[index].modifyHandValue(score=8)
             
             # 7  - checking for a full house (one pair, and one three of a kind)
             if (stats["1"] == 2) or (stats["2"] == 2) or (stats["3"] == 2) or (stats["4"] == 2) or (stats["5"] == 2) or (stats["6"] == 2) or (stats["7"] == 2) or (stats["8"] == 2) or (stats["9"] == 2) or (stats["10"] == 2) or (stats["Jack"] == 2) or (stats["Queen"] == 2) or (stats["King"] == 2) or (stats["Ace"] == 2):
                 if (stats["1"] == 3) or (stats["2"] == 3) or (stats["3"] >= 3) or (stats["4"] == 3) or (stats["5"] == 3) or (stats["6"] == 3) or (stats["7"] == 3) or (stats["8"] == 3) or (stats["9"] == 3) or (stats["10"] == 3) or (stats["Jack"] == 3) or (stats["Queen"] == 3) or (stats["King"] == 3) or (stats["Ace"] == 3):
-                    players[index].modifyHandValue(value=7)
+                    players[index].modifyHandValue(score=7)
             elif (stats["1"] == 3) or (stats["2"] == 3) or (stats["3"] == 3) or (stats["4"] == 3) or (stats["5"] == 3) or (stats["6"] == 3) or (stats["7"] == 3) or (stats["8"] == 3) or (stats["9"] == 3) or (stats["10"] == 3) or (stats["Jack"] == 3) or (stats["Queen"] == 3) or (stats["King"] == 3) or (stats["Ace"] == 3):
                 if (stats["1"] == 2) or (stats["2"] == 2) or (stats["3"] == 2) or (stats["4"] == 2) or (stats["5"] == 2) or (stats["6"] == 2) or (stats["7"] == 2) or (stats["8"] == 2) or (stats["9"] == 2) or (stats["10"] == 2) or (stats["Jack"] == 2) or (stats["Queen"] == 2) or (stats["King"] == 2) or (stats["Ace"] == 2):
-                    players[index].modifyHandValue(value=7)
+                    players[index].modifyHandValue(score=7)
             
             # 6  - checking for a flush (five of the same suit) - this should be the result given
             if (stats["d"] == 5) or (stats["c"] == 5) or (stats["h"] == 5) or (stats["s"] == 5):
-                players[index].modifyHandValue(value=6)
+                players[index].modifyHandValue(score=6)
             
             # 5  - checking for a straight (five cards in rank order)
             if (stats["1"] >= 1) and  (stats["2"] >= 1) and (stats["3"] >= 1) and  (stats["4"] >= 1) and (stats["5"] >= 1):
-                players[index].modifyHandValue(value=5)
+                players[index].modifyHandValue(score=5)
             elif (stats["2"] >= 1) and  (stats["3"] >= 1) and (stats["4"] >= 1) and  (stats["5"] >= 1) and (stats["6"] >= 1):
-                players[index].modifyHandValue(value=5)
+                players[index].modifyHandValue(score=5)
             elif (stats["3"] >= 1) and  (stats["4"] >= 1) and (stats["5"] >= 1) and  (stats["6"] >= 1) and (stats["7"] >= 1):
-                players[index].modifyHandValue(value=5)
+                players[index].modifyHandValue(score=5)
             elif (stats["4"] >= 1) and  (stats["5"] >= 1) and (stats["6"] >= 1) and  (stats["7"] >= 1) and (stats["8"] >= 1):
-                players[index].modifyHandValue(value=5)
+                players[index].modifyHandValue(score=5)
             elif (stats["5"] >= 1) and  (stats["6"] >= 1) and (stats["7"] >= 1) and  (stats["8"] >= 1) and (stats["9"] >= 1):
-                players[index].modifyHandValue(value=5)
+                players[index].modifyHandValue(score=5)
             elif (stats["6"] >= 1) and  (stats["7"] >= 1) and (stats["8"] >= 1) and  (stats["9"] >= 1) and (stats["10"] >= 1):
-                players[index].modifyHandValue(value=5)
+                players[index].modifyHandValue(score=5)
             elif (stats["7"] >= 1) and  (stats["8"] >= 1) and (stats["9"] >= 1) and  (stats["10"] >= 1) and (stats["Jack"] >= 1):
-                players[index].modifyHandValue(value=5)
+                players[index].modifyHandValue(score=5)
             elif (stats["8"] >= 1) and  (stats["9"] >= 1) and (stats["10"] >= 1) and  (stats["Jack"] >= 1) and (stats["King"] >= 1):
-                players[index].modifyHandValue(value=5)
+                players[index].modifyHandValue(score=5)
             elif (stats["9"] >= 1) and  (stats["10"] >= 1) and (stats["Jack"] >= 1) and  (stats["Queen"] >= 1) and (stats["Queen"] >= 1):
-                players[index].modifyHandValue(value=5)
+                players[index].modifyHandValue(score=5)
             elif (stats["10"] >= 1) and  (stats["Jack"] >= 1) and (stats["Queen"] >= 1) and  (stats["King"] >= 1) and (stats["Ace"] >= 1):
-                players[index].modifyHandValue(value=5)
+                players[index].modifyHandValue(score=5)
             
             # 4  - checking for three of a kind
             if (stats["1"] == 3) or (stats["2"] == 3) or (stats["3"] == 3) or (stats["4"] == 3) or (stats["5"] == 3) or (stats["6"] == 3) or (stats["7"] == 3) or (stats["8"] == 3) or (stats["9"] == 3) or (stats["10"] == 3) or (stats["Jack"] == 3) or (stats["Queen"] == 3) or (stats["King"] == 3) or (stats["Ace"] == 3):
-                players[index].modifyHandValue(value=4)
+                players[index].modifyHandValue(score=4)
             
             # 3  - checking for two pair
             if (stats["1"] == 2):
                 if (stats["2"] == 2) or (stats["3"] == 2) or (stats["4"] == 2) or (stats["5"] == 2) or (stats["6"] == 2) or (stats["7"] == 2) or (stats["8"] == 2) or (stats["9"] == 2) or (stats["10"] == 2) or (stats["Jack"] == 2) or (stats["Queen"] == 2) or (stats["King"] == 2) or (stats["Ace"] == 2):
-                    players[index].modifyHandValue(value=3)
+                    players[index].modifyHandValue(score=3)
             elif(stats["2"] == 2):
                 if (stats["1"] == 2) or (stats["3"] == 2) or (stats["4"] == 2) or (stats["5"] == 2) or (stats["6"] == 2) or (stats["7"] == 2) or (stats["8"] == 2) or (stats["9"] == 2) or (stats["10"] == 2) or (stats["Jack"] == 2) or (stats["Queen"] == 2) or (stats["King"] == 2) or (stats["Ace"] == 2):
-                    players[index].modifyHandValue(value=3)
+                    players[index].modifyHandValue(score=3)
             elif(stats["3"] == 2):
                 if (stats["1"] == 2) or (stats["2"] == 2) or (stats["4"] == 2) or (stats["5"] == 2) or (stats["6"] == 2) or (stats["7"] == 2) or (stats["8"] == 2) or (stats["9"] == 2) or (stats["10"] == 2) or (stats["Jack"] == 2) or (stats["Queen"] == 2) or (stats["King"] == 2) or (stats["Ace"] == 2):
-                    players[index].modifyHandValue(value=3)
+                    players[index].modifyHandValue(score=3)
             elif(stats["4"] == 2):
                 if (stats["1"] == 2) or (stats["2"] == 2) or (stats["3"] == 2) or (stats["5"] == 2) or (stats["6"] == 2) or (stats["7"] == 2) or (stats["8"] == 2) or (stats["9"] == 2) or (stats["10"] == 2) or (stats["Jack"] == 2) or (stats["Queen"] == 2) or (stats["King"] == 2) or (stats["Ace"] == 2):
-                    players[index].modifyHandValue(value=3)
+                    players[index].modifyHandValue(score=3)
             elif(stats["5"] == 2):
                 if (stats["1"] == 2) or (stats["2"] == 2) or (stats["3"] == 2) or (stats["4"] == 2) or (stats["6"] == 2) or (stats["7"] == 2) or (stats["8"] == 2) or (stats["9"] == 2) or (stats["10"] == 2) or (stats["Jack"] == 2) or (stats["Queen"] == 2) or (stats["King"] == 2) or (stats["Ace"] == 2):
-                    players[index].modifyHandValue(value=3)
+                    players[index].modifyHandValue(score=3)
             elif(stats["6"] == 2):
                 if (stats["1"] == 2) or (stats["2"] == 2) or (stats["3"] == 2) or (stats["4"] == 2) or (stats["5"] == 2) or (stats["7"] == 2) or (stats["8"] == 2) or (stats["9"] == 2) or (stats["10"] == 2) or (stats["Jack"] == 2) or (stats["Queen"] == 2) or (stats["King"] == 2) or (stats["Ace"] == 2):
-                    players[index].modifyHandValue(value=3)
+                    players[index].modifyHandValue(score=3)
             elif(stats["7"] == 2):
                 if (stats["1"] == 2) or (stats["2"] == 2) or (stats["3"] == 2) or (stats["4"] == 2) or (stats["5"] == 2) or (stats["6"] == 2) or (stats["8"] == 2) or (stats["9"] == 2) or (stats["10"] == 2) or (stats["Jack"] == 2) or (stats["Queen"] == 2) or (stats["King"] == 2) or (stats["Ace"] == 2):
-                    players[index].modifyHandValue(value=3)
+                    players[index].modifyHandValue(score=3)
             elif(stats["8"] == 2):
                 if (stats["1"] == 2) or (stats["2"] == 2) or (stats["3"] == 2) or (stats["4"] == 2) or (stats["5"] == 2) or (stats["6"] == 2) or (stats["7"] == 2) or (stats["9"] == 2) or (stats["10"] == 2) or (stats["Jack"] == 2) or (stats["Queen"] == 2) or (stats["King"] == 2) or (stats["Ace"] == 2):
-                    players[index].modifyHandValue(value=3)
+                    players[index].modifyHandValue(score=3)
             elif(stats["9"] == 2):
                 if (stats["1"] == 2) or (stats["2"] == 2) or (stats["3"] == 2) or (stats["4"] == 2) or (stats["5"] == 2) or (stats["6"] == 2) or (stats["7"] == 2) or (stats["8"] == 2) or (stats["10"] == 2) or (stats["Jack"] == 2) or (stats["Queen"] == 2) or (stats["King"] == 2) or (stats["Ace"] == 2):
-                    players[index].modifyHandValue(value=3)
+                    players[index].modifyHandValue(score=3)
             elif(stats["10"] == 2):
                 if (stats["1"] == 2) or (stats["2"] == 2) or (stats["3"] == 2) or (stats["4"] == 2) or (stats["5"] == 2) or (stats["6"] == 2) or (stats["7"] == 2) or (stats["8"] == 2) or (stats["9"] == 2) or (stats["Jack"] == 2) or (stats["Queen"] == 2) or (stats["King"] == 2) or (stats["Ace"] == 2):
-                    players[index].modifyHandValue(value=3)
+                    players[index].modifyHandValue(score=3)
             elif(stats["Jack"] == 2):
                 if (stats["1"] == 2) or (stats["2"] == 2) or (stats["3"] == 2) or (stats["4"] == 2) or (stats["5"] == 2) or (stats["6"] == 2) or (stats["7"] == 2) or (stats["8"] == 2) or (stats["9"] == 2) or (stats["10"] == 2) or (stats["Queen"] == 2) or (stats["King"] == 2) or (stats["Ace"] == 2):
-                    players[index].modifyHandValue(value=3)
+                    players[index].modifyHandValue(score=3)
             elif(stats["Queen"] == 2):
                 if (stats["1"] == 2) or (stats["2"] == 2) or (stats["3"] == 2) or (stats["4"] == 2) or (stats["5"] == 2) or (stats["6"] == 2) or (stats["7"] == 2) or (stats["8"] == 2) or (stats["9"] == 2) or (stats["10"] == 2) or (stats["Jack"] == 2) or (stats["King"] == 2) or (stats["Ace"] == 2):
-                    players[index].modifyHandValue(value=3)
+                    players[index].modifyHandValue(score=3)
             elif(stats["King"] == 2):
                 if (stats["1"] == 2) or (stats["2"] == 2) or (stats["3"] == 2) or (stats["4"] == 2) or (stats["5"] == 2) or (stats["6"] == 2) or (stats["7"] == 2) or (stats["8"] == 2) or (stats["9"] == 2) or (stats["10"] == 2) or (stats["Jack"] == 2) or (stats["Queen"] == 2) or (stats["Ace"] == 2):
-                    players[index].modifyHandValue(value=3)
+                    players[index].modifyHandValue(score=3)
             elif(stats["Ace"] == 2):
                 if (stats["1"] == 2) or (stats["2"] == 2) or (stats["3"] == 2) or (stats["4"] == 2) or (stats["5"] == 2) or (stats["6"] == 2) or (stats["7"] == 2) or (stats["8"] == 2) or (stats["9"] == 2) or (stats["10"] == 2) or (stats["Jack"] == 2) or (stats["Queen"] == 2) or (stats["King"] == 2):
-                    players[index].modifyHandValue(value=3)
+                    players[index].modifyHandValue(score=3)
             
             # 2  - checking for pair
             if (stats["1"] == 2) or (stats["2"] == 2) or (stats["3"] == 2) or (stats["4"] == 2) or (stats["5"] == 2) or (stats["6"] == 2) or (stats["7"] == 2) or (stats["8"] == 2) or (stats["9"] == 2) or (stats["10"] == 2) or (stats["Jack"] == 2) or (stats["Queen"] == 2) or (stats["King"] == 2) or (stats["Ace"] == 2):
-                players[index].modifyHandValue(value=2)
+                players[index].modifyHandValue(score=2)
             
             # 1  - checking for high card - is this necessary?
-            players[index].modifyHandValue(value=1)
+            players[index].modifyHandValue(score=1)
 
