@@ -43,7 +43,7 @@ class player:
         """
         This method will update a players `callSatus`. Default is `callStatus=False`.
         """
-        self.callSatus = status
+        self.callStatus = status
 
     def modifyHandValue(self,score=0,value=0):
         """
@@ -116,11 +116,18 @@ class player:
         """
         returnDict = {"action":None,"amount":0}
         print(f"Player {self.label}:")
-        print(f"Price to call is: {call}.\n Your balance: {self.chips}.\n Your hand: {self.displayHandPretty()}.")
-        action = input("What would you like to do?\n Call - Raise - Fold\n")
+        if (call == 0):
+            print(f"Your balance: {self.chips}.\n Your hand: {self.displayHandPretty()}.")
+            action = input("What would you like to do?\n Check - Raise - Fold\n")
+        elif (call != 0):
+            print(f"Price to call is: {call}.\n Your balance: {self.chips}.\n Your hand: {self.displayHandPretty()}.")
+            action = input("What would you like to do?\n Call - Raise - Fold\n")
         if (action.lower() == "call"):
             self.modifyChips(amount=call)
             returnDict["action"] = "call"
+            return returnDict
+        if (action.lower() == "check"):
+            returnDict["action"] = "check"
             return returnDict
         elif(action.lower() == "raise"):
             while(True):
