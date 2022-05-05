@@ -1575,6 +1575,32 @@ class game:
             elif (stats["Ace"] == 2):
                 players[index].modifyHandValue(score=2,value=13)
             
-            # 1  - checking for high card - is this necessary?
-            players[index].modifyHandValue(score=1)
-
+            # 1  - checking for high card
+            if (stats["1"] >= 1):
+                players[index].modifyHandValue(score=1,value=0)
+            elif (stats["2"] >= 1):
+                players[index].modifyHandValue(score=1,value=1)
+            elif (stats["3"] >= 1):
+                players[index].modifyHandValue(score=1,value=2)
+            elif (stats["4"] >= 1):
+                players[index].modifyHandValue(score=1,value=3)
+            elif (stats["5"] >= 1):
+                players[index].modifyHandValue(score=1,value=4)
+            elif (stats["6"] >= 1):
+                players[index].modifyHandValue(score=1,value=5)
+            elif (stats["7"] >= 1):
+                players[index].modifyHandValue(score=1,value=6)
+            elif (stats["8"] >= 1):
+                players[index].modifyHandValue(score=1,value=7)
+            elif (stats["9"] >= 1):
+                players[index].modifyHandValue(score=1,value=8)
+            elif (stats["10"] >= 1):
+                players[index].modifyHandValue(score=1,value=9)
+            elif (stats["Jack"] >= 1):
+                players[index].modifyHandValue(score=1,value=10)
+            elif (stats["Queen"] >= 1):
+                players[index].modifyHandValue(score=1,value=11)
+            elif (stats["King"] >= 1):
+                players[index].modifyHandValue(score=1,value=12)
+            elif (stats["Ace"] >= 1):
+                players[index].modifyHandValue(score=1,value=13)
