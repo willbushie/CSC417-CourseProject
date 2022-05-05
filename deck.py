@@ -16,7 +16,6 @@ class deck:
         """
         cards = [
             {"suit":"Hearts","rank":"Ace"},
-            {"suit":"Hearts","rank":"One"},
             {"suit":"Hearts","rank":"Two"},
             {"suit":"Hearts","rank":"Three"},
             {"suit":"Hearts","rank":"Four"},
@@ -30,7 +29,6 @@ class deck:
             {"suit":"Hearts","rank":"Queen"},
             {"suit":"Hearts","rank":"King"},
             {"suit":"Diamonds","rank":"Ace"},
-            {"suit":"Diamonds","rank":"One"},
             {"suit":"Diamonds","rank":"Two"},
             {"suit":"Diamonds","rank":"Three"},
             {"suit":"Diamonds","rank":"Four"},
@@ -44,7 +42,6 @@ class deck:
             {"suit":"Diamonds","rank":"Queen"},
             {"suit":"Diamonds","rank":"King"},
             {"suit":"Spades","rank":"Ace"},
-            {"suit":"Spades","rank":"One"},
             {"suit":"Spades","rank":"Two"},
             {"suit":"Spades","rank":"Three"},
             {"suit":"Spades","rank":"Four"},
@@ -58,7 +55,6 @@ class deck:
             {"suit":"Spades","rank":"Queen"},
             {"suit":"Spades","rank":"King"},
             {"suit":"Clubs","rank":"Ace"},
-            {"suit":"Clubs","rank":"One"},
             {"suit":"Clubs","rank":"Two"},
             {"suit":"Clubs","rank":"Three"},
             {"suit":"Clubs","rank":"Four"},
