@@ -1133,37 +1133,33 @@ class game:
                 elif (stats["King"] >= 3):
                     players[index].modifyHand(score=7,value=(13+12))
 
-            """ if (stats["1"] == 3) or (stats["2"] == 3) or (stats["3"] >= 3) or (stats["4"] == 3) or (stats["5"] == 3) or (stats["6"] == 3) or (stats["7"] == 3) or (stats["8"] == 3) or (stats["9"] == 3) or (stats["10"] == 3) or (stats["Jack"] == 3) or (stats["Queen"] == 3) or (stats["King"] == 3) or (stats["Ace"] == 3):
-                    players[index].modifyHandValue(score=7)
-            elif (stats["1"] == 3) or (stats["2"] == 3) or (stats["3"] == 3) or (stats["4"] == 3) or (stats["5"] == 3) or (stats["6"] == 3) or (stats["7"] == 3) or (stats["8"] == 3) or (stats["9"] == 3) or (stats["10"] == 3) or (stats["Jack"] == 3) or (stats["Queen"] == 3) or (stats["King"] == 3) or (stats["Ace"] == 3):
-                if (stats["1"] == 3) or (stats["2"] == 2) or (stats["3"] == 2) or (stats["4"] == 2) or (stats["5"] == 2) or (stats["6"] == 2) or (stats["7"] == 2) or (stats["8"] == 2) or (stats["9"] == 2) or (stats["10"] == 2) or (stats["Jack"] == 2) or (stats["Queen"] == 2) or (stats["King"] == 2) or (stats["Ace"] == 2):
-                    players[index].modifyHandValue(score=7) """
-            
             # 6  - checking for a flush (five of the same suit) - this should be the result given
             if (stats["d"] >= 5) or (stats["c"] >= 5) or (stats["h"] >= 5) or (stats["s"] >= 5):
                 players[index].modifyHandValue(score=6)
             
             # 5  - checking for a straight (five cards in rank order)
-            if (stats["1"] >= 1) and  (stats["2"] >= 1) and (stats["3"] >= 1) and  (stats["4"] >= 1) and (stats["5"] >= 1):
-                players[index].modifyHandValue(score=5)
+            if (stats["Ace"] >= 1) and  (stats["1"] >= 1) and (stats["2"] >= 1) and  (stats["3"] >= 1) and (stats["4"] >= 1):
+                players[index].modifyHandValue(score=5,value=0)
+            elif (stats["1"] >= 1) and  (stats["2"] >= 1) and (stats["3"] >= 1) and  (stats["4"] >= 1) and (stats["5"] >= 1):
+                players[index].modifyHandValue(score=5,value=1)
             elif (stats["2"] >= 1) and  (stats["3"] >= 1) and (stats["4"] >= 1) and  (stats["5"] >= 1) and (stats["6"] >= 1):
-                players[index].modifyHandValue(score=5)
+                players[index].modifyHandValue(score=5,value=2)
             elif (stats["3"] >= 1) and  (stats["4"] >= 1) and (stats["5"] >= 1) and  (stats["6"] >= 1) and (stats["7"] >= 1):
-                players[index].modifyHandValue(score=5)
+                players[index].modifyHandValue(score=5,value=3)
             elif (stats["4"] >= 1) and  (stats["5"] >= 1) and (stats["6"] >= 1) and  (stats["7"] >= 1) and (stats["8"] >= 1):
-                players[index].modifyHandValue(score=5)
+                players[index].modifyHandValue(score=5,value=4)
             elif (stats["5"] >= 1) and  (stats["6"] >= 1) and (stats["7"] >= 1) and  (stats["8"] >= 1) and (stats["9"] >= 1):
-                players[index].modifyHandValue(score=5)
+                players[index].modifyHandValue(score=5,value=5)
             elif (stats["6"] >= 1) and  (stats["7"] >= 1) and (stats["8"] >= 1) and  (stats["9"] >= 1) and (stats["10"] >= 1):
-                players[index].modifyHandValue(score=5)
+                players[index].modifyHandValue(score=5,value=6)
             elif (stats["7"] >= 1) and  (stats["8"] >= 1) and (stats["9"] >= 1) and  (stats["10"] >= 1) and (stats["Jack"] >= 1):
-                players[index].modifyHandValue(score=5)
+                players[index].modifyHandValue(score=5,value=7)
             elif (stats["8"] >= 1) and  (stats["9"] >= 1) and (stats["10"] >= 1) and  (stats["Jack"] >= 1) and (stats["King"] >= 1):
-                players[index].modifyHandValue(score=5)
+                players[index].modifyHandValue(score=5,value=8)
             elif (stats["9"] >= 1) and  (stats["10"] >= 1) and (stats["Jack"] >= 1) and  (stats["Queen"] >= 1) and (stats["Queen"] >= 1):
-                players[index].modifyHandValue(score=5)
+                players[index].modifyHandValue(score=5,value=9)
             elif (stats["10"] >= 1) and  (stats["Jack"] >= 1) and (stats["Queen"] >= 1) and  (stats["King"] >= 1) and (stats["Ace"] >= 1):
-                players[index].modifyHandValue(score=5)
+                players[index].modifyHandValue(score=5,value=10)
             
             # 4  - checking for three of a kind
             if (stats["1"] == 3) or (stats["2"] == 3) or (stats["3"] == 3) or (stats["4"] == 3) or (stats["5"] == 3) or (stats["6"] == 3) or (stats["7"] == 3) or (stats["8"] == 3) or (stats["9"] == 3) or (stats["10"] == 3) or (stats["Jack"] == 3) or (stats["Queen"] == 3) or (stats["King"] == 3) or (stats["Ace"] == 3):
